@@ -17,18 +17,17 @@ return new class extends Migration
             $table->string('status');
             $table->string('bagian');
             $table->string('nama');
-            $table->string('panggilan');
             $table->string('nip')->unique();
             $table->string('nuptk')->unique();
             $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
+            $table->string('tanggal_lahir');
             $table->string('agama');
             $table->string('status_nikah');
             $table->string('kelamin');
             $table->string('alamat');
             $table->string('no');
             $table->string('email')->unique();
-            $table->date('mulai_kerja');
+            $table->string('mulai_kerja');
             $table->timestamps();
         });
     }

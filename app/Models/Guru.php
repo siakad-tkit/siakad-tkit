@@ -18,7 +18,6 @@ class Guru extends Model
         'status',
         'bagian',
         'nama',
-        'panggilan',
         'nip',
         'nuptk',
         'tempat_lahir',

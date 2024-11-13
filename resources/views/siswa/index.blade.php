@@ -40,7 +40,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('guru.index') }}">
+          <a class="nav-link" href="{{ route('guru.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
@@ -48,7 +48,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('siswa.index') }}">
+          <a class="nav-link active" href="{{ route('siswa.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
@@ -81,7 +81,7 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          <h6 class="font-weight-bolder text-white mb-0">Tabel Guru</h6>
+          <h6 class="font-weight-bolder text-white mb-0">Tabel Siswa</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           
@@ -106,134 +106,166 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tabel Guru</h6>
+              <h6>Tabel Siswa</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-              <a href="{{ route('guru.create') }}" class="btn btn-success mb-3" style="padding-left:20px; margin-left: 20px;">TAMBAH DATA GURU</a>
+              <a href="{{ route('siswa.create') }}" class="btn btn-success mb-3" style="padding-left:20px; margin-left: 20px;">TAMBAH DATA SISWA</a>
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Foto</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Status</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Bagian</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Lengkap</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">NIP</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">NUPTK</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Panggilan</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nomor Induk</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">NISN</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Jenis Kelamin</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Tempat Tanggal Lahir</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Agama</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Status Nikah</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Jenis Kelamin</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Alamat</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Anak ke</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Ayah</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Ibu</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Pekerjaan Ayah</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Pekerjaan Ibu</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Desa / Kelurahan</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Kecamatan</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Kabupaten</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Provinsi</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">No Tlp</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Email</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Tahun Masuk Kerja</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @forelse ($gurus as $guru)
+                    @forelse ($siswas as $siswa)
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="{{ Storage::url('').$guru->foto }}" class="rounded-circle" style="width: 80px; height: 85px">
-                          </div> 
+                            <img src="{{ Storage::url('').$siswa->foto }}" class="rounded-circle" style="width: 80px; height: 85px">
+                          </div>
                         </div>
                       </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->status }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->nama }}</p>
                           </div>
                         <div> 
                       </td>     
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->bagian }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->panggilan }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->nama }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->no_induk }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->nip }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->nisn }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->nuptk }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->kelamin }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->tempat_lahir }}, {{ $guru->tanggal_lahir }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->tempat_lahir }}, {{ $siswa->tanggal_lahir }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->agama }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->agama }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->status_nikah }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->anak_ke }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->kelamin }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->ayah }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->alamat }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->ibu }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->no }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->pekerjaan_ayah }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->email }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->pekerjaan_ibu }}</p>
                           </div>
                         <div> 
                       </td>    
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->mulai_kerja }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->kelurahan }}</p>
+                          </div>
+                        <div> 
+                      </td>
+                      <td>
+                        <div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->kecamatan }}</p>
+                          </div>
+                        <div> 
+                      </td>
+                      <td>
+                        <div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->kabupaten }}</p>
+                          </div>
+                        <div> 
+                      </td>
+                      <td>
+                        <div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->provinsi }}</p>
+                          </div>
+                        <div> 
+                      </td>
+                      <td>
+                        <div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="text-xs text-secondary mb-0">{{ $siswa->no }}</p>
                           </div>
                         <div> 
                       </td>
                       <td class="text-center">
-                        <form onsubmit="return confirm('Apakah Anda Yakin?');"action="{{ route('guru.destroy', $guru->id) }}" method="POST"><a href="{{ route('guru.edit', $guru->id) }}" class="btn btn-primary">EDIT</a>
+                        <form onsubmit="return confirm('Apakah Anda Yakin?');"action="{{ route('siswa.destroy', $siswa->id) }}" method="POST"><a href="{{ route('siswa.edit', $siswa->id) }}" class="btn btn-primary">EDIT</a>
                       @csrf
                       @method('DELETE')
                           <button type="submit" class="btn btn-danger">HAPUS</button>
