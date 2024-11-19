@@ -4,8 +4,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/logos/logotk.jpg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <link href="{{ asset('path/to/font-awesome/css/all.min.css') }}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <title>
     Admin SIAKAD TKIT Darul Falah Solo Baru
   </title>
@@ -105,7 +113,7 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          <h6 class="font-weight-bolder text-white mb-0">Tabel Guru</h6>
+          
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           
@@ -130,148 +138,68 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tabel Guru</h6>
+              <h6>Tabel Kelas</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-              <a href="{{ route('guru.create') }}" class="btn btn-success mb-3" style="padding-left:20px; margin-left: 20px;">TAMBAH DATA GURU</a>
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Foto</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Status</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Bagian</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Lengkap</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">NIP</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">NUPTK</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Tempat Tanggal Lahir</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Agama</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Status Nikah</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Jenis Kelamin</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Alamat</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">No Tlp</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Email</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Tahun Masuk Kerja</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @forelse ($gurus as $guru)
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="{{ Storage::url('').$guru->foto }}" class="rounded-circle" style="width: 80px; height: 85px">
-                          </div> 
+              <a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-kelas" style="margin-left:15px;">Tambah Data Kelas</a>
+        <br><br>
+        <table class="table table-bordered table-striped" id="laravel_11_datatable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Kelas</th>
+                    <th>Jumlah Siswa</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($kelas as $kelas)
+                <tr id="index_{{ $kelas->id }}">
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $kelas->nama }}</td>
+                    <td>{{ $kelas->jml_siswa }}</td>
+                    <td>
+                    <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $kelas->id }}" class="btn btn-warning btn-sm">
+                    <i class="fa fa-pencil-alt"></i>
+                    </a>
+                    <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $kelas->id }}" class="btn btn-danger btn-sm">
+                    <i class="fa fa-trash-alt"></i>
+                    </a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="ajax-kelas-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="kelasCrudModal"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="kelasForm" name="kelasForm" class="form-horizontal" enctype="multipart/form-data">
+                        <input type="hidden" name="kelas_id" id="kelas_id">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Nama kelas</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama kelas" value="" maxlength="50" required="">
+                            </div>
                         </div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->status }}</p>
-                          </div>
-                        <div> 
-                      </td>     
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->bagian }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->nama }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->nip }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->nuptk }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->tempat_lahir }}, {{ $guru->tanggal_lahir }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->agama }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->status_nikah }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->kelamin }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->alamat }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->no }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->email }}</p>
-                          </div>
-                        <div> 
-                      </td>    
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $guru->mulai_kerja }}</p>
-                          </div>
-                        <div> 
-                      </td>
-                      <td class="text-center">
-                        <form onsubmit="return confirm('Apakah Anda Yakin?');"action="{{ route('guru.destroy', $guru->id) }}" method="POST"><a href="{{ route('guru.edit', $guru->id) }}" class="btn btn-primary">EDIT</a>
-                      @csrf
-                      @method('DELETE')
-                          <button type="submit" class="btn btn-danger">HAPUS</button>
-                        </form>
-                      </td>       
-                    </tr>
-                  @empty
-                    <tr>
-                        <td colspan="1">No data available</td>
-                    </tr>
-                  @endforelse
-                  </tbody>
-                </table>
-              </div>
+
+                        <div class="form-group">
+                            <label for="jml_siswa" class="col-sm-3 control-label">Jumlah Siswa</label>
+                            <div class="col-sm-12">
+                                <input type="number" class="form-control" id="jml_siswa" name="jml_siswa" placeholder="Masukkan Jumlah Siswa" value="" required="">
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" id="btn-save" value="create">Simpan/button>
+                        </div>
+                    </form>
+                </div>
             </div>
           </div>
         </div>
@@ -298,6 +226,93 @@
   
       </div>
     </div>
+    <script>
+        var SITEURL = "{{ url('/') }}/";
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#laravel_11_datatable').DataTable();
+
+            $('#create-new-kelas').click(function() {
+                $('#btn-save').val("create-kelas");
+                $('#kelas_id').val('');
+                $('#kelasForm').trigger("reset");
+                $('#kelasCrudModal').html("Add New kelas");
+                $('#ajax-kelas-modal').modal('show');
+                $('#modal-preview').attr('src', 'https://via.placeholder.com/150').addClass('hidden');
+            });
+
+            $('body').on('click', '#btn-edit-post', function() {
+                var id = $(this).data('id');
+                $.get(SITEURL + 'kelas/index/kelasEdit/' + kelas_id, function(data) {
+                    $('#kelasCrudModal').html("Edit Kelas");
+                    $('#btn-save').val("edit-kelas");
+                    $('#ajax-kelas-modal').modal('show');
+                    $('#kelas_id').val(data.id);
+                    $('#nama').val(data.nama);
+                    $('#jml_siswa').val(data.jml_siswa);
+                });
+            });
+
+            $('body').on('click', '#btn-delete-post', function() {
+                var id = $(this).data("id");
+                if (confirm("Are You sure want to delete !")) {
+                    $.ajax({
+                        type: "GET",
+                        url: SITEURL + "kelas/index/kelasDelete/" + kelas_id,
+                        success: function(data) {
+                            var oTable = $('#laravel_11_datatable').dataTable();
+                            oTable.fnDraw(false);
+                        },
+                        error: function(data) {
+                            console.log('Error:', data);
+                        }
+                    });
+                }
+            });
+
+            $('body').on('submit', '#kelasForm', function(e) {
+                e.preventDefault();
+                var actionType = $('#btn-save').val();
+                $('#btn-save').html('Sending..');
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: SITEURL + "kelas/index/kelasStore",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        $('#kelasForm').trigger("reset");
+                        $('#ajax-kelas-modal').modal('hide');
+                        $('#btn-save').html('Save changes');
+                        var oTable = $('#laravel_11_datatable').dataTable();
+                        oTable.fnDraw(false);
+                    },
+                    error: function(data) {
+                        console.log('Error:', data);
+                        $('#btn-save').html('Save changes');
+                    }
+                });
+            });
+        });
+
+        function readURL(input, id) {
+            id = id || '#modal-preview';
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $(id).attr('src', e.target.result).removeClass('hidden');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
   </div>
   <!--   Core JS Files   -->
   <script src="{{asset('adminpage')}}/assets/js/core/popper.min.js"></script>

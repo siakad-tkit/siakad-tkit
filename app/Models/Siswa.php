@@ -35,4 +35,5 @@ class Siswa extends Model
         'no',
 
     ];
+    
 }

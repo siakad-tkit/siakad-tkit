@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\AkademikController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,5 +37,13 @@ Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.cre
 Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
 Route::get('siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
 
+Route::resource('/kelas', \App\Http\Controllers\KelasController::class);
+Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
+Route::post('kelas/index/kelasStore', [KelasController::class, 'store'])->name('kelas.store');
+Route::get('kelas/index/kelasEdit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
+Route::get('kelas/index/kelasDelete/{id}', [KelasController::class, 'destroy']);
+
+Route::resource('/akademik', \App\Http\Controllers\AkademikController::class);
+Route::get('/akademik', [AkademikController::class, 'index'])->name('akademik.index');
 
 require __DIR__.'/auth.php';
