@@ -41,7 +41,8 @@ Route::resource('/kelas', \App\Http\Controllers\KelasController::class);
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
 Route::post('kelas/index/kelasStore', [KelasController::class, 'store'])->name('kelas.store');
 Route::get('kelas/index/kelasEdit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
-Route::get('kelas/index/kelasDelete/{id}', [KelasController::class, 'destroy']);
+Route::delete('kelas/index/kelasDelete/{id}', [KelasController::class, 'destroy']);
+Route::put('kelas/index/kelasUpdate/{id}', [KelasController::class, 'update']);
 
 Route::resource('/akademik', \App\Http\Controllers\AkademikController::class);
 Route::get('/akademik', [AkademikController::class, 'index'])->name('akademik.index');

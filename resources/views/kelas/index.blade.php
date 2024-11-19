@@ -120,7 +120,7 @@
           <ul class="navbar-nav  justify-content-end">
             
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+              <a href="javascript:(0)" class="nav-link text-white p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
                   <i class="sidenav-toggler-line bg-white"></i>
                   <i class="sidenav-toggler-line bg-white"></i>
@@ -143,68 +143,68 @@
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
               <a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-kelas" style="margin-left:15px;">Tambah Data Kelas</a>
-        <br><br>
-        <table class="table table-bordered table-striped" id="laravel_11_datatable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Kelas</th>
-                    <th>Jumlah Siswa</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($kelas as $kelas)
-                <tr id="index_{{ $kelas->id }}">
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $kelas->nama }}</td>
-                    <td>{{ $kelas->jml_siswa }}</td>
-                    <td>
-                    <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $kelas->id }}" class="btn btn-warning btn-sm">
-                    <i class="fa fa-pencil-alt"></i>
-                    </a>
-                    <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $kelas->id }}" class="btn btn-danger btn-sm">
-                    <i class="fa fa-trash-alt"></i>
-                    </a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    <div class="modal fade" id="ajax-kelas-modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="kelasCrudModal"></h4>
-                </div>
-                <div class="modal-body">
-                    <form id="kelasForm" name="kelasForm" class="form-horizontal" enctype="multipart/form-data">
-                        <input type="hidden" name="kelas_id" id="kelas_id">
-                        <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Nama kelas</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama kelas" value="" maxlength="50" required="">
-                            </div>
-                        </div>
+            <br><br>
+            <table class="table table-bordered table-striped" id="laravel_11_datatable">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Kelas</th>
+                        <th>Jumlah Siswa</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($kelas as $kelas)
+                    <tr id="index_{{ $kelas->id }}">
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $kelas->nama }}</td>
+                        <td>{{ $kelas->jml_siswa }}</td>
+                        <td>
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $kelas->id }}" class="btn btn-warning btn-sm">
+                              <i class="fa fa-pencil-alt"></i>
+                            </a>
+                          
+                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $kelas->id }}" class="btn btn-danger btn-sm">
+                              <i class="fa fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
 
-                        <div class="form-group">
-                            <label for="jml_siswa" class="col-sm-3 control-label">Jumlah Siswa</label>
-                            <div class="col-sm-12">
-                                <input type="number" class="form-control" id="jml_siswa" name="jml_siswa" placeholder="Masukkan Jumlah Siswa" value="" required="">
-                            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="ajax-kelas-modal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="kelasCrudModal"></h4>
                         </div>
-                        
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary" id="btn-save" value="create">Simpan/button>
+                        <div class="modal-body">
+                            <form id="kelasForm" name="kelasForm" class="form-horizontal">
+                                <input type="hidden" name="kelas_id" id="kelas_id">
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Nama Kelas</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Kelas" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jml_siswa" class="col-sm-3 control-label">Jumlah Siswa</label>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" id="jml_siswa" name="jml_siswa" placeholder="Masukkan Jumlah Siswa" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary" id="btn-save" value="create">Simpan</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
-          </div>
-        </div>
-      </div>
-      </div>
       <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
@@ -227,81 +227,84 @@
       </div>
     </div>
     <script>
-        var SITEURL = "{{ url('/') }}/";
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+    var SITEURL = "{{ url('/') }}/";
 
-            $('#laravel_11_datatable').DataTable();
-
-            $('#create-new-kelas').click(function() {
-                $('#btn-save').val("create-kelas");
-                $('#kelas_id').val('');
-                $('#kelasForm').trigger("reset");
-                $('#kelasCrudModal').html("Add New kelas");
-                $('#ajax-kelas-modal').modal('show');
-                $('#modal-preview').attr('src', 'https://via.placeholder.com/150').addClass('hidden');
-            });
-
-            $('body').on('click', '#btn-edit-post', function() {
-                var id = $(this).data('id');
-                $.get(SITEURL + 'kelas/index/kelasEdit/' + kelas_id, function(data) {
-                    $('#kelasCrudModal').html("Edit Kelas");
-                    $('#btn-save').val("edit-kelas");
-                    $('#ajax-kelas-modal').modal('show');
-                    $('#kelas_id').val(data.id);
-                    $('#nama').val(data.nama);
-                    $('#jml_siswa').val(data.jml_siswa);
-                });
-            });
-
-            $('body').on('click', '#btn-delete-post', function() {
-                var id = $(this).data("id");
-                if (confirm("Are You sure want to delete !")) {
-                    $.ajax({
-                        type: "GET",
-                        url: SITEURL + "kelas/index/kelasDelete/" + kelas_id,
-                        success: function(data) {
-                            var oTable = $('#laravel_11_datatable').dataTable();
-                            oTable.fnDraw(false);
-                        },
-                        error: function(data) {
-                            console.log('Error:', data);
-                        }
-                    });
-                }
-            });
-
-            $('body').on('submit', '#kelasForm', function(e) {
-                e.preventDefault();
-                var actionType = $('#btn-save').val();
-                $('#btn-save').html('Sending..');
-                var formData = new FormData(this);
-                $.ajax({
-                    type: 'POST',
-                    url: SITEURL + "kelas/index/kelasStore",
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        $('#kelasForm').trigger("reset");
-                        $('#ajax-kelas-modal').modal('hide');
-                        $('#btn-save').html('Save changes');
-                        var oTable = $('#laravel_11_datatable').dataTable();
-                        oTable.fnDraw(false);
-                    },
-                    error: function(data) {
-                        console.log('Error:', data);
-                        $('#btn-save').html('Save changes');
-                    }
-                });
-            });
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
 
+        $('#laravel_11_datatable').DataTable();
+
+        $('#create-new-kelas').click(function() {
+            $('#btn-save').val("create-kelas");
+            $('#kelas_id').val('');
+            $('#kelasForm').trigger("reset");
+            $('#kelasCrudModal').html("Tambah Data Kelas");
+            $('#ajax-kelas-modal').modal('show');
+            $('#modal-preview').attr('src', 'https://via.placeholder.com/150').addClass('hidden');
+        });
+
+        $('body').on('click', '#btn-edit-post', function() {
+        var id = $(this).data('id'); 
+        $.get(SITEURL + 'kelas/index/kelasEdit/' + id, function(data) {
+            $('#kelasCrudModal').html("Edit Data Kelas");
+            $('#btn-save').val("edit-kelas"); 
+            $('#ajax-kelas-modal').modal('show');
+            $('#kelas_id').val(data.id);
+            $('#nama').val(data.nama); 
+            $('#jml_siswa').val(data.jml_siswa); 
+          });
+        });
+
+        $('body').on('click', '#btn-delete-post', function() {
+            var id = $(this).data("id"); 
+
+            if (confirm("Are you sure you want to delete this?")) {
+                $.ajax({
+                    type: "DELETE",
+                    url: SITEURL + "kelas/index/kelasDelete/" + id,
+                    success: function(data) {
+                        console.log("Data berhasil dihapus:", data);
+                        var oTable = $('#laravel_11_datatable').DataTable();
+                        location.reload(); 
+                    },
+                    error: function(data) {
+                        console.error("Error saat menghapus data:", data);
+                    }
+                });
+            }
+        });
+
+        $('body').on('submit', '#kelasForm', function(e) {
+        e.preventDefault();
+
+        var id = $('#kelas_id').val(); 
+        var actionType = $('#btn-save').val(); 
+        var formData = $(this).serialize(); 
+
+        $('#btn-save').html('Menyimpan..');
+
+        $.ajax({
+            type: actionType === "edit-kelas" ? 'PUT' : 'POST', 
+            url: actionType === "edit-kelas" ? SITEURL + 'kelas/index/kelasUpdate/' + id : SITEURL + 'kelas/index/kelasStore',
+            data: formData,
+            success: function(response) {
+                $('#kelasForm').trigger("reset");
+                $('#ajax-kelas-modal').modal('hide');
+                $('#btn-save').html('Simpan');
+                location.reload(); 
+            },
+            error: function(xhr) {
+                console.error("Error:", xhr.responseText);
+                $('#btn-save').html('Simpan');
+            }
+            });
+          }); 
+
+        // Preview Gambar
         function readURL(input, id) {
             id = id || '#modal-preview';
             if (input.files && input.files[0]) {
@@ -312,7 +315,9 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    </script>
+    });
+</script>
+
   </div>
   <!--   Core JS Files   -->
   <script src="{{asset('adminpage')}}/assets/js/core/popper.min.js"></script>

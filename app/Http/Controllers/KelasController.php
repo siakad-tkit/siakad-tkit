@@ -10,16 +10,15 @@ use Illuminate\Support\Facades\Response;
 class KelasController extends Controller
 {
     public function index()
-{
-    if (request()->ajax()) {
-        $data = Kelas::all();
-        return response()->json($data);
+    {
+        if (request()->ajax()) {
+            $data = Kelas::all();
+            return response()->json($data);
+        }
+
+        $kelas = Kelas::all();
+        return view('kelas.index', compact('kelas')); 
     }
-
-    $kelas = Kelas::all(); // Mendefinisikan $kelas
-    return view('kelas.index', compact('kelas')); // Kirim $kelas ke view
-}
-
 
     public function store(Request $request)
     {
@@ -33,15 +32,26 @@ class KelasController extends Controller
     return response()->json(['success' => 'Kelas berhasil disimpan!']);
     }
 
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
+        $kelas = Kelas::findOrFail($id);
+        return response()->json($kelas);
+    }
+
+    public function update(Request $request, $id)
+    {
+
         $request->validate([
             'nama' => 'required|string|max:255',
             'jml_siswa' => 'required|integer|min:0',
         ]);
 
         $kelas = Kelas::findOrFail($id);
-        $kelas->edit($request->all());
+
+        $kelas->update([
+            'nama' => $request->input('nama'),
+            'jml_siswa' => $request->input('jml_siswa'),
+        ]);
 
         return response()->json(['success' => 'Kelas berhasil diperbarui!', 'kelas' => $kelas]);
     }
