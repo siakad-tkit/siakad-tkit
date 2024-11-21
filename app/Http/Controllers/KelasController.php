@@ -29,7 +29,7 @@ class KelasController extends Controller
 
         Kelas::create($validated);
 
-    return response()->json(['success' => 'Kelas berhasil disimpan!']);
+    return response()->json(['success' => 'Data kelas berhasil disimpan!']);
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class KelasController extends Controller
             'jml_siswa' => $request->input('jml_siswa'),
         ]);
 
-        return response()->json(['success' => 'Kelas berhasil diperbarui!', 'kelas' => $kelas]);
+        return response()->json(['success' => 'Data kelas berhasil diperbarui!', 'kelas' => $kelas]);
     }
 
     public function destroy($id)
@@ -61,6 +61,6 @@ class KelasController extends Controller
         $kelas = Kelas::findOrFail($id);
         $kelas->delete();
 
-        return response()->json(['success' => 'Kelas berhasil dihapus!']);
+        return response()->json(['success' => 'Data kelas berhasil dihapus!']);
     }
 }

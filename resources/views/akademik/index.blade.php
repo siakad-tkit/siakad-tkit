@@ -5,8 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/logos/logotk.jpg">
+  <link rel="icon" type="image/png" href="{{asset('adminpage')}}/assets/img/logos/logotk.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
   <link href="{{ asset('path/to/font-awesome/css/all.min.css') }}" rel="stylesheet">
@@ -15,7 +14,7 @@
   <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <title>
-    Admin SIAKAD TKIT Darul Falah Solo Baru
+    SIAKAD TKIT Darul Falah Solo Baru
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -34,7 +33,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.jpg" 
+    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png" 
          width="40px" 
          height="40px" 
          style="display: block; margin: 0 auto;" 
@@ -56,7 +55,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('guru.index') }}">
+          <a class="nav-link " href="../pages/billing.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Master</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('guru.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
@@ -72,27 +79,19 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('akademik.index') }}">
+          <a class="nav-link " href="{{ route('kelas.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel akademik</span>
+            <span class="nav-link-text ms-1">Tabel Kelas</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('akademik.index') }}">
+          <a class="nav-link active" href="{{ route('akademik.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Tabel Akademik</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="../pages/billing.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Master</span>
           </a>
         </li>
         <li class="nav-item">
@@ -138,7 +137,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tabel akademik</h6>
+              <h6>Tabel Akademik</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -148,8 +147,8 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama akademik</th>
-                        <th>Jumlah Siswa</th>
+                        <th>Tahun Akademik</th>
+                        <th>Nama Semester</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -157,14 +156,14 @@
                     @foreach ($akademiks as $akademik)
                     <tr id="index_{{ $akademik->id }}">
                         <td>{{ $loop->iteration }}</td>
+                        <td>{{ $akademik->tahun }}</td>
                         <td>{{ $akademik->nama }}</td>
-                        <td>{{ $akademik->jml_siswa }}</td>
                         <td>
-                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $akademik->id }}" class="btn btn-warning btn-sm">
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $akademik->id }}" class="btn btn-primary">
                               <i class="fa fa-pencil-alt"></i>
                             </a>
                           
-                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $akademik->id }}" class="btn btn-danger btn-sm">
+                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $akademik->id }}" class="btn btn-danger">
                               <i class="fa fa-trash-alt"></i>
                             </a>
                         </td>
@@ -184,17 +183,22 @@
                             <form id="akademikForm" name="akademikForm" class="form-horizontal">
                                 <input type="hidden" name="akademik_id" id="akademik_id">
                                 <div class="form-group">
-                                    <label for="name" class="col-sm-2 control-label">Nama akademik</label>
+                                    <label for="tahun" class="col-sm-3 control-label">Tahun Akademik</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama akademik" required>
+                                        <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Masukkan Tahun akademik" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jml_siswa" class="col-sm-3 control-label">Jumlah Siswa</label>
-                                    <div class="col-sm-12">
-                                        <input type="number" class="form-control" id="jml_siswa" name="jml_siswa" placeholder="Masukkan Jumlah Siswa" required>
-                                    </div>
+                                  <label for="nama" class="col-sm-3 control-label">Nama Semester</label>
+                                  <div class="col-sm-12">
+                                      <select class="form-control" id="nama" name="nama" required>
+                                          <option value="" disabled selected>Pilih Semester</option>
+                                          <option value="Ganjil">Ganjil</option>
+                                          <option value="Genap">Genap</option>
+                                      </select>
+                                  </div>
                                 </div>
+
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary" id="btn-save" value="create">Simpan</button>
                                 </div>
@@ -205,7 +209,8 @@
                   </div>
                 </div>
             </div>
-      <footer class="footer pt-3  ">
+    </div>
+    <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
@@ -214,14 +219,13 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
+                <a href="" class="font-weight-bold" target="_blank">Tim Pengabdian ITSPKU</a>
+                
               </div>
             </div>
           </div>
         </div>
       </footer>
-    </div>
   </main>
   
       </div>
@@ -242,7 +246,7 @@
             $('#btn-save').val("create-akademik");
             $('#akademik_id').val('');
             $('#akademikForm').trigger("reset");
-            $('#akademikCrudModal').html("Tambah Data akademik");
+            $('#akademikCrudModal').html("Tambah Data Akademik");
             $('#ajax-akademik-modal').modal('show');
             $('#modal-preview').attr('src', 'https://via.placeholder.com/150').addClass('hidden');
         });
@@ -250,12 +254,12 @@
         $('body').on('click', '#btn-edit-post', function() {
         var id = $(this).data('id'); 
         $.get(SITEURL + 'akademik/index/akademikEdit/' + id, function(data) {
-            $('#akademikCrudModal').html("Edit Data akademik");
+            $('#akademikCrudModal').html("Edit Data Akademik");
             $('#btn-save').val("edit-akademik"); 
             $('#ajax-akademik-modal').modal('show');
             $('#akademik_id').val(data.id);
+            $('#tahun').val(data.tahun); 
             $('#nama').val(data.nama); 
-            $('#jml_siswa').val(data.jml_siswa); 
           });
         });
 

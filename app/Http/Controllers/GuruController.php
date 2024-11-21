@@ -25,7 +25,7 @@ class GuruController extends Controller
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
             'bagian' => 'required',
-            'nama' => 'required|min:3',
+            'nama' => 'required',
             'nip' => 'required|unique:gurus,nip',
             'nuptk' => 'required|unique:gurus,nuptk',
             'tempat_lahir' => 'required',
@@ -58,11 +58,11 @@ class GuruController extends Controller
     {
         $validatedData = $request->validate([
             'foto' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'nama' => 'required|min:3',
-            'nip' => 'required|min:2',
+            'nama' => 'required',
+            'nip' => 'required',
             'status' => 'required',
             'bagian' => 'required',
-            'nuptk' => 'required|min:3',
+            'nuptk' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required|date',
             'agama' => 'required',
