@@ -5,6 +5,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\AkademikController;
+use App\Http\Controllers\PenugasanController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -47,5 +48,9 @@ Route::put('kelas/index/kelasUpdate/{id}', [KelasController::class, 'update']);
 
 Route::resource('/akademik', \App\Http\Controllers\AkademikController::class);
 Route::get('/akademik', [AkademikController::class, 'index'])->name('akademik.index');
+Route::post('akademik/index/akademikStore', [AkademikController::class, 'store'])->name('akademik.store');
+Route::get('akademik/index/akademikEdit/{id}', [AkademikController::class, 'edit'])->name('akademik.edit');
+Route::delete('akademik/index/akademikDelete/{id}', [AkademikController::class, 'destroy']);
+Route::put('akademik/index/akademikUpdate/{id}', [AkademikController::class, 'update']);
 
 require __DIR__.'/auth.php';

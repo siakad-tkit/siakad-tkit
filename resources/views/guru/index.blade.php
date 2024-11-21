@@ -2,12 +2,19 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/logos/logotk.jpg">
+
+  <link rel="icon" type="image/png" href="{{asset('adminpage')}}/assets/img/logos/logotk.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <link href="{{ asset('path/to/font-awesome/css/all.min.css') }}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <title>
-    Admin SIAKAD TKIT Darul Falah Solo Baru
+    SIAKAD TKIT Darul Falah Solo Baru
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -26,7 +33,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.jpg" 
+    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png" 
          width="40px" 
          height="40px" 
          style="display: block; margin: 0 auto;" 
@@ -45,6 +52,14 @@
               <i class="ni ni-tv-2 text-dark text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="../pages/billing.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Master</span>
           </a>
         </li>
         <li class="nav-item">
@@ -80,14 +95,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/billing.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Master</span>
-          </a>
-        </li>
-        <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-link">
                     @csrf
 
@@ -105,7 +112,7 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          <h6 class="font-weight-bolder text-white mb-0">Tabel Guru</h6>
+          
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           
@@ -134,7 +141,7 @@
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-              <a href="{{ route('guru.create') }}" class="btn btn-success mb-3" style="padding-left:20px; margin-left: 20px;">TAMBAH DATA GURU</a>
+              <a href="{{ route('guru.create') }}" class="btn btn-info ml-3" style="padding-left:20px; margin-left: 20px;">TAMBAH DATA GURU</a>
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
@@ -257,12 +264,19 @@
                         <div> 
                       </td>
                       <td class="text-center">
-                        <form onsubmit="return confirm('Apakah Anda Yakin?');"action="{{ route('guru.destroy', $guru->id) }}" method="POST"><a href="{{ route('guru.edit', $guru->id) }}" class="btn btn-primary">EDIT</a>
-                      @csrf
-                      @method('DELETE')
-                          <button type="submit" class="btn btn-danger">HAPUS</button>
+                        <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('guru.destroy', $guru->id) }}" method="POST">
+                          <!-- Tombol Edit -->
+                          <a href="{{ route('guru.edit', $guru->id) }}" class="btn btn-primary">
+                            <i class="fa fa-pencil-alt"></i> <!-- Ikon Pensil -->
+                          </a>
+                          @csrf
+                          @method('DELETE')
+                          <!-- Tombol Hapus -->
+                          <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash-alt"></i> <!-- Ikon Tempat Sampah -->
+                          </button>
                         </form>
-                      </td>       
+                      </td>     
                     </tr>
                   @empty
                     <tr>
@@ -277,6 +291,7 @@
         </div>
       </div>
       </div>
+      </div>
       <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
@@ -286,8 +301,8 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
+                <a href="" class="font-weight-bold" target="_blank">Tim Pengabdian ITSPKU</a>
+             
               </div>
             </div>
           </div>

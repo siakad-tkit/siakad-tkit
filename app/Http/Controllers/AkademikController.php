@@ -14,54 +14,54 @@ class AkademikController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $data = Kelas::all();
+            $data = Akademik::all();
             return response()->json($data);
         }
 
-        $kelas = Kelas::all(); 
-        return view('kelas.index', compact('kelas')); 
+        $akademiks = Akademik::all(); 
+        return view('akademik.index', compact('akademiks')); 
     }
     
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'jml_siswa' => 'required|integer|min:0',
+            'tahun' => 'required',
+            'nama' => 'required',
         ]);
 
-        Kelas::create($validated);
+        Akademik::create($validated);
 
-    return response()->json(['success' => 'Kelas berhasil disimpan!']);
+    return response()->json(['success' => 'Data akademik berhasil disimpan!']);
     }
 
     public function edit($id)
     {
-        $kelas = Kelas::findOrFail($id);
-        return response()->json($kelas);
+        $akademiks = Akademik::findOrFail($id);
+        return response()->json($akademiks);
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'jml_siswa' => 'required|integer|min:0',
+            'tahun' => 'required',
+            'nama' => 'required',
         ]);
 
-        $kelas = Kelas::findOrFail($id);
+        $akademiks = Akademik::findOrFail($id);
 
-        $kelas->update([
+        $akademiks->update([
+            'tahun' => $request->input('tahun'),
             'nama' => $request->input('nama'),
-            'jml_siswa' => $request->input('jml_siswa'),
         ]);
 
-        return response()->json(['success' => 'Kelas berhasil diperbarui!', 'kelas' => $kelas]);
+        return response()->json(['success' => 'Data akademik berhasil diperbarui!', 'akademik' => $akademiks]);
     }
 
     public function destroy($id)
     {
-        $kelas = Kelas::findOrFail($id);
-        $kelas->delete();
+        $akademiks = Akademik::findOrFail($id);
+        $akademiks->delete();
 
-        return response()->json(['success' => 'Kelas berhasil dihapus!']);
+        return response()->json(['success' => 'Data akademik berhasil dihapus!']);
     }
 }

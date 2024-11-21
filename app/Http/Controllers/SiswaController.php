@@ -23,9 +23,9 @@ class SiswaController extends Controller
     {
         $validatedData = $request->validate([
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'nama' => 'required|min:5',
-            'panggilan' => 'required|min:3',
-            'no_induk' => 'required|min:3',
+            'nama' => 'required',
+            'panggilan' => 'required',
+            'no_induk' => 'required',
             'nisn' => 'required',
             'kelamin' => 'required',
             'tempat_lahir' => 'required',
@@ -62,11 +62,11 @@ class SiswaController extends Controller
     {
         $validatedData = $request->validate([
             'foto' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'nama' => 'required|min:3',
-            'nip' => 'required|min:2',
+            'nama' => 'required',
+            'nip' => 'required',
             'status' => 'required',
             'bagian' => 'required',
-            'nuptk' => 'required|min:3',
+            'nuptk' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required|date',
             'agama' => 'required',
