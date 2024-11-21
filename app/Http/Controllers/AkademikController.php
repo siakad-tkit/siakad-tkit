@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Kelas;  // Import model Kelas
 use App\Models\Akademik;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
