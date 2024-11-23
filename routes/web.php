@@ -6,17 +6,15 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\AkademikController;
 use App\Http\Controllers\PenugasanController;
+use App\Http\Controllers\TagihanController;
+use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\KegiatanController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-    
-});
+Route::get('/', function () {return view('welcome'); });
 
-
-Route::get('/dashboard-tkit', function () {
-    return view('dashboard-tkit');
+Route::get('/dashboard-tkit', function () {return view('dashboard-tkit');
 })->middleware(['auth', 'verified'])->name('dashboard-tkit');
 
 Route::middleware('auth')->group(function () {
@@ -52,5 +50,12 @@ Route::post('akademik/index/akademikStore', [AkademikController::class, 'store']
 Route::get('akademik/index/akademikEdit/{id}', [AkademikController::class, 'edit'])->name('akademik.edit');
 Route::delete('akademik/index/akademikDelete/{id}', [AkademikController::class, 'destroy']);
 Route::put('akademik/index/akademikUpdate/{id}', [AkademikController::class, 'update']);
+
+Route::resource('/kegiatan', \App\Http\Controllers\KegiatanController::class);
+Route::get('/kegiatan', [KegiatanController::class, 'index'])->name('kegiatan.index');
+Route::post('kegiatan/index/kegiatanStore', [KegiatanController::class, 'store'])->name('kegiatan.store');
+Route::get('kegiatan/index/kegiatanEdit/{id}', [KegiatanController::class, 'edit'])->name('kegiatan.edit');
+Route::delete('kegiatan/index/kegiatanDelete/{id}', [KegiatanController::class, 'destroy']);
+Route::put('kegiatan/index/kegiatanUpdate/{id}', [KegiatanController::class, 'update']);
 
 require __DIR__.'/auth.php';
