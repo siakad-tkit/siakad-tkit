@@ -37,7 +37,7 @@
          width="40px" 
          height="40px" 
          style="display: block; margin: 0 auto;" 
-         alt="main_logo">
+         alt="main_logo"  href="{{ url('/welcome') }}>
     <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
         SIAKAD TKIT Darul Falah Solo Baru
     </span>

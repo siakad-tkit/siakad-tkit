@@ -47,134 +47,71 @@
 </x-guest-layout>--}}
 
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center">
+   <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-20 h-20 mt-6 bg-white rounded-full shadow-md flex items-center justify-center">
+      <img
+        src="{{asset('adminpage')}}/assets/img/logos/logo-landingpage.png"
+        alt="Logo"
+        class="w-18 h-18 "
+      />
+   </div>
+   <div class="w-3/4 max-w-4xl bg-white shadow-lg rounded-lg flex overflow-hidden">
 
-      <!--=============== REMIXICONS ===============-->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
-
-      <!--=============== CSS ===============-->
-      <link rel="stylesheet" href="{{asset('loginpage')}}/assets/css/styles.css">
-      
-      <title>Login dan Register</title>
-   </head>
-   <body>
-      <!--=============== LOGIN IMAGE ===============-->
-      <svg class="login__blob" viewBox="0 0 566 840" xmlns="http://www.w3.org/2000/svg">
-         <mask id="mask0" mask-type="alpha">
-            <path d="M342.407 73.6315C388.53 56.4007 394.378 17.3643 391.538 
-            0H566V840H0C14.5385 834.991 100.266 804.436 77.2046 707.263C49.6393 
-            591.11 115.306 518.927 176.468 488.873C363.385 397.026 156.98 302.824 
-            167.945 179.32C173.46 117.209 284.755 95.1699 342.407 73.6315Z"/>
-         </mask>
-      
-         <g mask="url(#mask0)">
-            <path d="M342.407 73.6315C388.53 56.4007 394.378 17.3643 391.538 
-            0H566V840H0C14.5385 834.991 100.266 804.436 77.2046 707.263C49.6393 
-            591.11 115.306 518.927 176.468 488.873C363.385 397.026 156.98 302.824 
-            167.945 179.32C173.46 117.209 284.755 95.1699 342.407 73.6315Z"/>
-      
-            <!-- Insert your image (recommended size: 1000 x 1200) -->
-            <image class="login__img" href="{{asset('loginpage')}}/assets/img/bg-img.jpg"/>
-         </g>
-      </svg>      
-
-      <center><h1 style="color:black">SIAKAD TKIT Darul Falah solobaru</h1></center>
-      <!--=============== LOGIN ===============-->
-      <div class="login container grid" id="loginAccessRegister">
-         <!--===== LOGIN ACCESS =====-->
-         <div class="login__access">
-            <h1 class="login__title">Login</h1>
-            
-            <div class="login__area">
-               <form method="POST" action="{{ route('login') }}" class="login__form">
-               @csrf
-                  <div class="login__content grid">
-                     <div class="login__box">
-                        <input type="email" id="email" name="email" required placeholder=" " class="login__input">
-                        <label for="email" class="login__label">Email</label>
-            
-                        <i class="ri-mail-fill login__icon"></i>
-                     </div>
-         
-                     <div class="login__box">
-                        <input type="password" id="password" name="password" required placeholder=" " class="login__input">
-                        <label for="password" class="login__label">Password</label>
-            
-                        <i class="ri-eye-off-fill login__icon login__password" id="loginPassword"></i>
-                     </div>
-                  </div>
-         
-                  <div class="login__forgot">
-                @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}">Lupa Password?</a>
-                @endif
-                </div>
-                
-                    <button class="login__button">
-                        <span>{{ __('Login') }}</span>
-                    </button>
-               </form>
-      
-               <p class="login__switch">
-                  Belum Punya Akun? 
-                  <button id="loginButtonRegister">Buat Akun</button>
-               </p>
-            </div>
+    <!-- Bagian Kiri: Form Login -->
+      <div class="w-1/2 my-4 p-8 mt-6 ">
+         <div class="text-center mb-6">
+            <h1 class="text-2xl font-bold text-blue-600">LOGIN</h1>
          </div>
-
-         <!--===== LOGIN REGISTER =====-->
-         <div class="login__register">
-            <h1 class="login__title">Register</h1>
-
-            <div class="login__area">
-               <form method="POST" action="{{ route('register') }}" class="login__form">
-               @csrf
-                  <div class="login__content grid">
-                  <div class="login__box">
-                        <input type="text" id="name" name="name" required placeholder=" " class="login__input">
-                        <label for="name" class="login__label">Nama</label>
-   
-                        <i class="ri-id-card-fill login__icon"></i>
-                     </div>
-   
-                     <div class="login__box">
-                        <input type="email" id="email" name="email" required placeholder=" " class="login__input">
-                        <label for="email" class="login__label">Email</label>
-   
-                        <i class="ri-mail-fill login__icon"></i>
-                     </div>
-   
-                     <div class="login__box">
-                        <input type="password" id="password" name="password" required placeholder=" " class="login__input">
-                        <label for="password" class="login__label">Password</label>
-   
-                        <i class="ri-eye-off-fill login__icon login__password" id="loginPasswordCreate"></i>
-                     </div>
-                     <div class="login__box">
-                        <input type="password" id="password_confirmation" name="password_confirmation" required placeholder=" " class="login__input">
-                        <label for="password_confirmation" class="login__label">Confirm Password</label>
-   
-                        <i class="ri-eye-off-fill login__icon login__password" id="loginPasswordCreate"></i>
-                     </div>
-                  </div>
-   
-                  <button class="login__button">
-                        <span>{{ __('Register') }}</span>
-                    </button>
-               </form>
-   
-               <p class="login__switch">
-                 Sudah Punya Akun? 
-                  <button id="loginButtonAccess">Login</button>
-               </p>
+         <form method="POST" action="{{ route('login') }}">
+            @csrf     
+            <div class="mb-4">
+               <label for="email" class="block text-gray-700 mb-2">Email</label>
+               <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+               />
             </div>
-         </div>
+            <div class="mb-2">
+               <label for="password" class="block text-gray-700 mb-2">Password</label>
+               <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="w-full px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 "
+               />
+               
+            </div>
+            <div class="flex justify-end mb-6">
+               <a href="#" class="text-sm text-blue-600 hover:underline">Lupa password?</a>
+            </div>
+            <div class="flex items-center justify-center">
+               <button
+               class="w-[150px] h-[46px] bg-[#638aec] rounded-[20px]  text-white font-semibold hover:bg-blue-700 transition "
+            >
+            {{ __('Login') }}
+            </button>
+            </div>
+            
+         </form>
       </div>
-      
-      <!--=============== MAIN JS ===============-->
-      <script src="{{asset('loginpage')}}/assets/js/main.js"></script>
-   </body>
+
+    <!-- Bagian Kanan: Ilustrasi -->
+      <div class="w-1/2 bg-blue-100 relative p-8 flex items-center justify-center">
+      <img
+        src="{{asset('adminpage')}}/assets/img/login-illus.png"
+        alt="Illustration"
+        class="max-w-sm "
+      />     
+    </div>
+  </div>
+</body>
 </html>
