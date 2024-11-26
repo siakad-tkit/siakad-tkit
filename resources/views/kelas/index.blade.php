@@ -34,10 +34,10 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png" 
-         width="40px" 
-         height="40px" 
-         style="display: block; margin: 0 auto;" 
+    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
+         width="40px"
+         height="40px"
+         style="display: block; margin: 0 auto;"
          alt="main_logo">
     <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
         SIAKAD TKIT Darul Falah Solo Baru
@@ -96,6 +96,14 @@
           </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link " href="{{ route('kegiatan.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Tabel Kegiatan</span>
+            </a>
+          </li>
+        <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-link">
                     @csrf
 
@@ -113,12 +121,12 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          
+
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          
+
           <ul class="navbar-nav  justify-content-end">
-            
+
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:(0)" class="nav-link text-white p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -163,7 +171,7 @@
                             <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $kelas->id }}" class="btn btn-primary">
                               <i class="fa fa-pencil-alt"></i>
                             </a>
-                          
+
                             <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $kelas->id }}" class="btn btn-danger">
                               <i class="fa fa-trash-alt"></i>
                             </a>
@@ -205,7 +213,7 @@
                   </div>
                 </div>
             </div>
-      
+
     </div>
     <footer class="footer pt-3  ">
         <div class="container-fluid">
@@ -217,12 +225,12 @@
                 </script>,
                 made with <i class="fa fa-heart"></i> by
                 <a href="" class="font-weight-bold" target="_blank">Tim Pengabdian ITSPKU</a>
-              
+
               </div>
             </div>
           </div>
         </div>
-      </footer> 
+      </footer>
 </main>
       </div>
     </div>
@@ -248,19 +256,19 @@
         });
 
         $('body').on('click', '#btn-edit-post', function() {
-        var id = $(this).data('id'); 
+        var id = $(this).data('id');
         $.get(SITEURL + 'kelas/index/kelasEdit/' + id, function(data) {
             $('#kelasCrudModal').html("Edit Data Kelas");
-            $('#btn-save').val("edit-kelas"); 
+            $('#btn-save').val("edit-kelas");
             $('#ajax-kelas-modal').modal('show');
             $('#kelas_id').val(data.id);
-            $('#nama').val(data.nama); 
-            $('#jml_siswa').val(data.jml_siswa); 
+            $('#nama').val(data.nama);
+            $('#jml_siswa').val(data.jml_siswa);
           });
         });
 
         $('body').on('click', '#btn-delete-post', function() {
-            var id = $(this).data("id"); 
+            var id = $(this).data("id");
 
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
@@ -269,7 +277,7 @@
                     success: function(data) {
                         console.log("Data berhasil dihapus:", data);
                         var oTable = $('#laravel_11_datatable').DataTable();
-                        location.reload(); 
+                        location.reload();
                     },
                     error: function(data) {
                         console.error("Error saat menghapus data:", data);
@@ -281,28 +289,28 @@
         $('body').on('submit', '#kelasForm', function(e) {
         e.preventDefault();
 
-        var id = $('#kelas_id').val(); 
-        var actionType = $('#btn-save').val(); 
-        var formData = $(this).serialize(); 
+        var id = $('#kelas_id').val();
+        var actionType = $('#btn-save').val();
+        var formData = $(this).serialize();
 
         $('#btn-save').html('Menyimpan..');
 
         $.ajax({
-            type: actionType === "edit-kelas" ? 'PUT' : 'POST', 
+            type: actionType === "edit-kelas" ? 'PUT' : 'POST',
             url: actionType === "edit-kelas" ? SITEURL + 'kelas/index/kelasUpdate/' + id : SITEURL + 'kelas/index/kelasStore',
             data: formData,
             success: function(response) {
                 $('#kelasForm').trigger("reset");
                 $('#ajax-kelas-modal').modal('hide');
                 $('#btn-save').html('Simpan');
-                location.reload(); 
+                location.reload();
             },
             error: function(xhr) {
                 console.error("Error:", xhr.responseText);
                 $('#btn-save').html('Simpan');
             }
             });
-          }); 
+          });
 
         // Preview Gambar
         function readURL(input, id) {
