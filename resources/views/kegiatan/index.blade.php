@@ -33,10 +33,10 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png" 
-         width="40px" 
-         height="40px" 
-         style="display: block; margin: 0 auto;" 
+    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
+         width="40px"
+         height="40px"
+         style="display: block; margin: 0 auto;"
          alt="main_logo">
     <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
         SIAKAD TKIT Darul Falah Solo Baru
@@ -87,13 +87,21 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('akademik.index') }}">
+          <a class="nav-link" href="{{ route('akademik.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Tabel Akademik</span>
           </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('kegiatan.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Tabel Kegiatan</span>
+            </a>
+          </li>
         <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-link">
                     @csrf
@@ -112,12 +120,12 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          
+
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          
+
           <ul class="navbar-nav  justify-content-end">
-            
+
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:(0)" class="nav-link text-white p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -159,14 +167,14 @@
                     <tr id="index_{{ $kegiatan->id }}">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $kegiatan->bulan }}</td>
-                        <td>{{ $kegiatan->mingu }}</td>
+                        <td>{{ $kegiatan->minggu }}</td>
                         <td>{{ $kegiatan->hari }}, {{ $kegiatan->tanggal }}</td>
                         <td>{{ $kegiatan->kegiatan }}</td>
                         <td>
                             <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $kegiatan->id }}" class="btn btn-primary">
                               <i class="fa fa-pencil-alt"></i>
                             </a>
-                          
+
                             <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $kegiatan->id }}" class="btn btn-danger">
                               <i class="fa fa-trash-alt"></i>
                             </a>
@@ -239,7 +247,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="kegiatan" class="col-sm-3 control-label">Tanggal</label>
+                                    <label for="kegiatan" class="col-sm-3 control-label">Nama Kegiatan</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" id="kegiatan" name="kegiatan" required>
                                     </div>
@@ -265,14 +273,14 @@
                 </script>,
                 made with <i class="fa fa-heart"></i> by
                 <a href="" class="font-weight-bold" target="_blank">Tim Pengabdian ITSPKU</a>
-                
+
               </div>
             </div>
           </div>
         </div>
       </footer>
   </main>
-  
+
       </div>
     </div>
     <script>
@@ -297,22 +305,22 @@
         });
 
         $('body').on('click', '#btn-edit-post', function() {
-        var id = $(this).data('id'); 
+        var id = $(this).data('id');
         $.get(SITEURL + 'kegiatan/index/kegiatanEdit/' + id, function(data) {
             $('#kegiatanCrudModal').html("Edit Data Kegiatan");
-            $('#btn-save').val("edit-kegiatan"); 
+            $('#btn-save').val("edit-kegiatan");
             $('#ajax-kegiatan-modal').modal('show');
             $('#kegiatan_id').val(data.id);
-            $('#bulan').val(data.bulan); 
-            $('#minggu').val(data.minggu); 
-            $('#hari').val(data.hari); 
-            $('#tanggal').val(data.tanggal); 
-            $('#bulan').val(data.kegiatan); 
+            $('#bulan').val(data.bulan);
+            $('#minggu').val(data.minggu);
+            $('#hari').val(data.hari);
+            $('#tanggal').val(data.tanggal);
+            $('#bulan').val(data.kegiatan);
           });
         });
 
         $('body').on('click', '#btn-delete-post', function() {
-            var id = $(this).data("id"); 
+            var id = $(this).data("id");
 
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
@@ -321,7 +329,7 @@
                     success: function(data) {
                         console.log("Data berhasil dihapus:", data);
                         var oTable = $('#laravel_11_datatable').DataTable();
-                        location.reload(); 
+                        location.reload();
                     },
                     error: function(data) {
                         console.error("Error saat menghapus data:", data);
@@ -333,28 +341,28 @@
         $('body').on('submit', '#kegiatanForm', function(e) {
         e.preventDefault();
 
-        var id = $('#kegiatan_id').val(); 
-        var actionType = $('#btn-save').val(); 
-        var formData = $(this).serialize(); 
+        var id = $('#kegiatan_id').val();
+        var actionType = $('#btn-save').val();
+        var formData = $(this).serialize();
 
         $('#btn-save').html('Menyimpan..');
 
         $.ajax({
-            type: actionType === "edit-kegiatan" ? 'PUT' : 'POST', 
+            type: actionType === "edit-kegiatan" ? 'PUT' : 'POST',
             url: actionType === "edit-kegiatan" ? SITEURL + 'kegiatan/index/kegiatanUpdate/' + id : SITEURL + 'kegiatan/index/kegiatanStore',
             data: formData,
             success: function(response) {
                 $('#kegiatanForm').trigger("reset");
                 $('#ajax-kegiatan-modal').modal('hide');
                 $('#btn-save').html('Simpan');
-                location.reload(); 
+                location.reload();
             },
             error: function(xhr) {
                 console.error("Error:", xhr.responseText);
                 $('#btn-save').html('Simpan');
             }
             });
-          }); 
+          });
     });
 </script>
 

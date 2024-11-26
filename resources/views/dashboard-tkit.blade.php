@@ -33,10 +33,10 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png" 
-         width="40px" 
-         height="40px" 
-         style="display: block; margin: 0 auto;" 
+    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
+         width="40px"
+         height="40px"
+         style="display: block; margin: 0 auto;"
          alt="main_logo">
     <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
         SIAKAD TKIT Darul Falah Solo Baru
@@ -96,6 +96,14 @@
           </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link " href="{{ route('kegiatan.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Tabel Kegiatan</span>
+            </a>
+        </li>
+        <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-link">
                     @csrf
 
@@ -114,12 +122,12 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          
+
           <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
         </nav>
-        
+
           <ul class="navbar-nav  justify-content-end">
-       
+
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -129,9 +137,9 @@
                 </div>
               </a>
             </li>
-       
+
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-             
+
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
               </ul>
             </li>
@@ -253,7 +261,7 @@
                 </script>,
                 made with <i class="fa fa-heart"></i> by
                 <a href="" class="font-weight-bold" target="_blank">Tim Pengabdian ITSPKU</a>
-              
+
               </div>
             </div>
           </div>
@@ -261,7 +269,7 @@
       </footer>
     </div>
   </main>
-  
+
   <!--   Core JS Files   -->
   <script src="{{asset('adminpage')}}/assets/js/core/popper.min.js"></script>
   <script src="{{asset('adminpage')}}/assets/js/core/bootstrap.min.js"></script>

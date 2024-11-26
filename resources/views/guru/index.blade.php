@@ -33,10 +33,10 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png" 
-         width="40px" 
-         height="40px" 
-         style="display: block; margin: 0 auto;" 
+    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
+         width="40px"
+         height="40px"
+         style="display: block; margin: 0 auto;"
          alt="main_logo">
     <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
         SIAKAD TKIT Darul Falah Solo Baru
@@ -95,6 +95,14 @@
           </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link " href="{{ route('kegiatan.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Tabel Kegiatan</span>
+            </a>
+          </li>
+        <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-link">
                     @csrf
 
@@ -112,12 +120,12 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          
+
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          
+
           <ul class="navbar-nav  justify-content-end">
-            
+
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -169,7 +177,7 @@
                         <div class="d-flex px-2 py-1">
                           <div>
                             <img src="{{ Storage::url('').$guru->foto }}" class="rounded-circle" style="width: 80px; height: 85px">
-                          </div> 
+                          </div>
                         </div>
                       </td>
                       <td>
@@ -177,91 +185,91 @@
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->status }}</p>
                           </div>
-                        <div> 
-                      </td>     
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->bagian }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->nama }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->nip }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->nuptk }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->tempat_lahir }}, {{ $guru->tanggal_lahir }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->agama }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->status_nikah }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->kelamin }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->alamat }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->no }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->email }}</p>
                           </div>
-                        <div> 
-                      </td>    
+                        <div>
+                      </td>
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->mulai_kerja }}</p>
                           </div>
-                        <div> 
+                        <div>
                       </td>
                       <td class="text-center">
                         <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('guru.destroy', $guru->id) }}" method="POST">
@@ -276,7 +284,7 @@
                             <i class="fa fa-trash-alt"></i> <!-- Ikon Tempat Sampah -->
                           </button>
                         </form>
-                      </td>     
+                      </td>
                     </tr>
                   @empty
                     <tr>
@@ -302,7 +310,7 @@
                 </script>,
                 made with <i class="fa fa-heart"></i> by
                 <a href="" class="font-weight-bold" target="_blank">Tim Pengabdian ITSPKU</a>
-             
+
               </div>
             </div>
           </div>
@@ -310,7 +318,7 @@
       </footer>
     </div>
   </main>
-  
+
       </div>
     </div>
   </div>
