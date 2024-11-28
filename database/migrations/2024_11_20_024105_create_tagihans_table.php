@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('jenis');
             $table->string('nominal');
             $table->string('status');
-            $table->string('tanggal');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

@@ -283,6 +283,8 @@
               $('#tagihanForm').trigger("reset");
               $('#tagihanCrudModal').html("Tambah Data Tagihan");
               $('#ajax-tagihan-modal').modal('show');
+              $('#modal-preview').attr('src', 'https://via.placeholder.com/150').addClass('hidden');
+
           });
 
           $('body').on('click', '#btn-edit-post', function() {
@@ -321,32 +323,44 @@
               }
           });
 
+
           $('body').on('submit', '#tagihanForm', function(e) {
-              e.preventDefault();
-
-              var id = $('#tagihan_id').val();
-              var actionType = $('#btn-save').val();
-              var formData = $(this).serialize();
-
-              $('#btn-save').html('Menyimpan..');
-
-              $.ajax({
-                  type: actionType === "edit-tagihan" ? 'PUT' : 'POST',
-                  url: actionType === "edit-tagihan" ? SITEURL + 'tagihan/' + id : SITEURL + 'tagihan',
-                  data: formData,
-                  success: function(response) {
-                      $('#tagihanForm').trigger("reset");
-                      $('#ajax-tagihan-modal').modal('hide');
-                      $('#btn-save').html('Simpan');
-                      location.reload();
-                  },
-                  error: function(xhr) {
-                      console.error("Error:", xhr.responseText);
-                      $('#btn-save').html('Simpan');
-                  }
-              });
+            e.preventDefault();
+            var id = $('#tagihan_id').val();
+            var actionType = $('#btn-save').val();
+            var formData = $(this).serialize();
+            
+            
+            $('#btn-save').html('Menyimpan..');
+            $.ajax({
+              type: actionType === "edit-tagihan" ? 'PUT' : 'POST',
+              url: actionType === "edit-tagihan" ? SITEURL + 'tagihan/index/tagihanUpdate/' + id : SITEURL + 'tagihan/index/tagihanStore',
+              data: formData,
+              success: function(response) {
+                $('#tagihanForm').trigger("reset");
+                $('#ajax-tagihan-modal').modal('hide');
+                $('#btn-save').html('Simpan');
+                location.reload();
+            },
+            error: function(xhr) {
+                console.error("Error:", xhr.responseText);
+                $('#btn-save').html('Simpan');
+            }
+            });
           });
-      });
+
+        // Preview Gambar
+        function readURL(input, id) {
+            id = id || '#modal-preview';
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $(id).attr('src', e.target.result).removeClass('hidden');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    });
     </script>
 
     <!-- Core JS Files -->
