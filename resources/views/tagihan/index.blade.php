@@ -5,7 +5,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="{{asset('adminpage')}}/assets/img/logos/logotk.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
@@ -80,7 +79,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('kelas.index') }}">
+          <a class="nav-link " href="{{ route('kelas.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
@@ -88,7 +87,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('akademik.index') }}">
+          <a class="nav-link" href="{{ route('akademik.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
@@ -102,15 +101,7 @@
               </div>
               <span class="nav-link-text ms-1">Tabel Kegiatan</span>
             </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('penugasan.index') }}">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Tabel Penugasan</span>
-            </a>
-        </li>
+          </li>
         <li class="nav-item">
           <li class="nav-item">
             <a class="nav-link " href="{{ route('tagihan.index') }}">
@@ -162,33 +153,36 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tabel Kelas</h6>
+              <h6>Tagihan</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-              <a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-kelas" style="margin-left:15px;">Tambah Data Kelas</a>
+              <a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-kegiatan" style="margin-left:15px;">Tambah Data</a>
             <br><br>
             <table class="table table-bordered table-striped" id="laravel_11_datatable">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Kelas</th>
-                        <th>Jumlah Siswa</th>
+                        <th>Bulan</th>
+                        <th>Minggu Ke</th>
+                        <th>Hari, Tanggal</th>
+                        <th>Nama Kegiatan</th>
                         <th>Aksi</th>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($kelas as $kelas)
-                    <tr id="index_{{ $kelas->id }}">
+                 <tbody>
+                    @foreach ($tagihans as $tagihan)
+                    <tr id="index_{{ $tagihan->id }}">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $kelas->nama }}</td>
-                        <td>{{ $kelas->jml_siswa }}</td>
+                        <td>{{ $tagihan->bulan }}</td>
+                        <td>{{ $tagihan->minggu }}</td>
+                        <td>{{ $tagihan->hari }}, {{ $tagihan->tanggal }}</td>
+                        <td>{{ $tagihan->tagihan }}</td>
                         <td>
-                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $kelas->id }}" class="btn btn-primary">
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $tagihan->id }}" class="btn btn-primary">
                               <i class="fa fa-pencil-alt"></i>
                             </a>
 
-                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $kelas->id }}" class="btn btn-danger">
+                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $tagihan->id }}" class="btn btn-danger">
                               <i class="fa fa-trash-alt"></i>
                             </a>
                         </td>
@@ -196,27 +190,74 @@
                     @endforeach
                 </tbody>
             </table>
-
+</thead>
+               
             <!-- Modal -->
-            <div class="modal fade" id="ajax-kelas-modal" aria-hidden="true">
+            <div class="modal fade" id="ajax-kegiatan-modal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="kelasCrudModal"></h4>
+                            <h4 class="modal-title" id="kegiatanCrudModal"></h4>
                         </div>
                         <div class="modal-body">
-                            <form id="kelasForm" name="kelasForm" class="form-horizontal">
-                                <input type="hidden" name="kelas_id" id="kelas_id">
+                            <form id="kegiatanForm" name="kegiatanForm" class="form-horizontal">
+                                <input type="hidden" name="kegiatan_id" id="kegiatan_id">
                                 <div class="form-group">
-                                    <label for="name" class="col-sm-2 control-label">Nama Kelas</label>
+                                    <label for="bulan" class="col-sm-3 control-label">Bulan</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Kelas" required>
+                                        <select class="form-control" id="bulan" name="bulan" required>
+                                            <option value="">-- Pilih Bulan --</option>
+                                            <option value="Januari">Januari</option>
+                                            <option value="Februari">Februari</option>
+                                            <option value="Maret">Maret</option>
+                                            <option value="April">April</option>
+                                            <option value="Mei">Mei</option>
+                                            <option value="Juni">Juni</option>
+                                            <option value="Juli">Juli</option>
+                                            <option value="Agustus">Agustus</option>
+                                            <option value="September">September</option>
+                                            <option value="Oktober">Oktober</option>
+                                            <option value="November">November</option>
+                                            <option value="Desember">Desember</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jml_siswa" class="col-sm-3 control-label">Jumlah Siswa</label>
+                                    <label for="minggu" class="col-sm-3 control-label">Minggu Ke</label>
                                     <div class="col-sm-12">
-                                        <input type="number" class="form-control" id="jml_siswa" name="jml_siswa" placeholder="Masukkan Jumlah Siswa" required>
+                                        <select class="form-control" id="minggu" name="minggu" required>
+                                            <option value="" disabled selected>Pilih Minggu</option>
+                                            <option value="1">Minggu Ke-1</option>
+                                            <option value="2">Minggu Ke-2</option>
+                                            <option value="3">Minggu Ke-3</option>
+                                            <option value="4">Minggu Ke-4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hari" class="col-sm-3 control-label">Hari</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="hari" name="hari" required>
+                                            <option value="" disabled selected>Pilih Hari</option>
+                                            <option value="Senin">Senin</option>
+                                            <option value="Selasa">Selasa</option>
+                                            <option value="Rabu">Rabu</option>
+                                            <option value="Kamis">Kamis</option>
+                                            <option value="Jumat">Jumat</option>
+                                            <option value="Sabtu">Sabtu</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tanggal" class="col-sm-3 control-label">Tanggal</label>
+                                    <div class="col-sm-12">
+                                        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="kegiatan" class="col-sm-3 control-label">Nama Kegiatan</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="kegiatan" name="kegiatan" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-offset-2 col-sm-10">
@@ -229,7 +270,6 @@
                   </div>
                 </div>
             </div>
-
     </div>
     <footer class="footer pt-3  ">
         <div class="container-fluid">
@@ -247,7 +287,8 @@
           </div>
         </div>
       </footer>
-</main>
+  </main>
+
       </div>
     </div>
     <script>
@@ -262,24 +303,27 @@
 
         $('#laravel_11_datatable').DataTable();
 
-        $('#create-new-kelas').click(function() {
-            $('#btn-save').val("create-kelas");
-            $('#kelas_id').val('');
-            $('#kelasForm').trigger("reset");
-            $('#kelasCrudModal').html("Tambah Data Kelas");
-            $('#ajax-kelas-modal').modal('show');
+        $('#create-new-kegiatan').click(function() {
+            $('#btn-save').val("create-kegiatan");
+            $('#kegiatan_id').val('');
+            $('#kegiatanForm').trigger("reset");
+            $('#kegiatanCrudModal').html("Tambah Data Kegiatan");
+            $('#ajax-kegiatan-modal').modal('show');
             $('#modal-preview').attr('src', 'https://via.placeholder.com/150').addClass('hidden');
         });
 
         $('body').on('click', '#btn-edit-post', function() {
         var id = $(this).data('id');
-        $.get(SITEURL + 'kelas/index/kelasEdit/' + id, function(data) {
-            $('#kelasCrudModal').html("Edit Data Kelas");
-            $('#btn-save').val("edit-kelas");
-            $('#ajax-kelas-modal').modal('show');
-            $('#kelas_id').val(data.id);
-            $('#nama').val(data.nama);
-            $('#jml_siswa').val(data.jml_siswa);
+        $.get(SITEURL + 'kegiatan/index/kegiatanEdit/' + id, function(data) {
+            $('#kegiatanCrudModal').html("Edit Data Kegiatan");
+            $('#btn-save').val("edit-kegiatan");
+            $('#ajax-kegiatan-modal').modal('show');
+            $('#kegiatan_id').val(data.id);
+            $('#bulan').val(data.bulan);
+            $('#minggu').val(data.minggu);
+            $('#hari').val(data.hari);
+            $('#tanggal').val(data.tanggal);
+            $('#bulan').val(data.kegiatan);
           });
         });
 
@@ -289,7 +333,7 @@
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
                     type: "DELETE",
-                    url: SITEURL + "kelas/index/kelasDelete/" + id,
+                    url: SITEURL + "kegiatan/index/kegiatanDelete/" + id,
                     success: function(data) {
                         console.log("Data berhasil dihapus:", data);
                         var oTable = $('#laravel_11_datatable').DataTable();
@@ -302,22 +346,22 @@
             }
         });
 
-        $('body').on('submit', '#kelasForm', function(e) {
+        $('body').on('submit', '#kegiatanForm', function(e) {
         e.preventDefault();
 
-        var id = $('#kelas_id').val();
+        var id = $('#kegiatan_id').val();
         var actionType = $('#btn-save').val();
         var formData = $(this).serialize();
 
         $('#btn-save').html('Menyimpan..');
 
         $.ajax({
-            type: actionType === "edit-kelas" ? 'PUT' : 'POST',
-            url: actionType === "edit-kelas" ? SITEURL + 'kelas/index/kelasUpdate/' + id : SITEURL + 'kelas/index/kelasStore',
+            type: actionType === "edit-kegiatan" ? 'PUT' : 'POST',
+            url: actionType === "edit-kegiatan" ? SITEURL + 'kegiatan/index/kegiatanUpdate/' + id : SITEURL + 'kegiatan/index/kegiatanStore',
             data: formData,
             success: function(response) {
-                $('#kelasForm').trigger("reset");
-                $('#ajax-kelas-modal').modal('hide');
+                $('#kegiatanForm').trigger("reset");
+                $('#ajax-kegiatan-modal').modal('hide');
                 $('#btn-save').html('Simpan');
                 location.reload();
             },
@@ -327,18 +371,6 @@
             }
             });
           });
-
-        // Preview Gambar
-        function readURL(input, id) {
-            id = id || '#modal-preview';
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $(id).attr('src', e.target.result).removeClass('hidden');
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
     });
 </script>
 

@@ -60,6 +60,13 @@ Route::get('kegiatan/index/kegiatanEdit/{id}', [KegiatanController::class, 'edit
 Route::delete('kegiatan/index/kegiatanDelete/{id}', [KegiatanController::class, 'destroy']);
 Route::put('kegiatan/index/kegiatanUpdate/{id}', [KegiatanController::class, 'update']);
 
+Route::resource('/tagihan', \App\Http\Controllers\TagihanController::class);
+Route::get('/tagihan', [TagihanController::class, 'index'])->name('tagihan.index');
+Route::post('tagihan/index/tagihanStore', [TagihanController::class, 'store'])->name('tagihan.store');
+Route::get('tagihan/index/tagihanEdit/{id}', [TagihanController::class, 'edit'])->name('tagihan.edit');
+Route::delete('tagihan/index/tagihanDelete/{id}', [TagihanController::class, 'destroy']);
+Route::put('tagihan/index/tagihanUpdate/{id}', [TagihanController::class, 'update']);
+
 Route::resource('/penugasan', \App\Http\Controllers\PenugasanController::class);
 Route::get('/penugasan', [PenugasanController::class, 'index'])->name('penugasan.index');
 Route::post('penugasan/index/penugasanStore', [PenugasanController::class, 'store'])->name('penugasan.store');
