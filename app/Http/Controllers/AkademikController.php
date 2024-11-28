@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\Kelas;  // Import model Kelas
+namespace App\Http\Controllers;// Import model Kelas
 use App\Models\Akademik;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -18,10 +17,10 @@ class AkademikController extends Controller
             return response()->json($data);
         }
 
-        $akademiks = Akademik::all(); 
-        return view('akademik.index', compact('akademiks')); 
+        $akademiks = Akademik::all();
+        return view('akademik.index', compact('akademiks'));
     }
-    
+
     public function store(Request $request)
     {
         $validated = $request->validate([

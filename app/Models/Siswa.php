@@ -35,5 +35,10 @@ class Siswa extends Model
         'no',
 
     ];
-    
+
+    public function absensis()
+    {
+        return $this->hasMany(Absensi::class);
+    }
+
 }

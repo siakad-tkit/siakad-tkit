@@ -9,6 +9,7 @@ use App\Http\Controllers\PenugasanController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\AbsensiController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -65,5 +66,13 @@ Route::post('penugasan/index/penugasanStore', [PenugasanController::class, 'stor
 Route::get('penugasan/index/penugasanEdit/{id}', [PenugasanController::class, 'edit'])->name('penugasan.edit');
 Route::delete('penugasan/index/penugasanDelete/{id}', [PenugasanController::class, 'destroy']);
 Route::put('penugasan/index/penugasanUpdate/{id}', [PenugasanController::class, 'update']);
+
+Route::resource('/absensi', \App\Http\Controllers\AbsensiController::class);
+Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi.index');
+Route::post('absensi/index/absensiStore', [AbsensiController::class, 'store'])->name('absensi.store');
+Route::get('absensi/index/absensiEdit/{id}', [AbsensiController::class, 'edit'])->name('absensi.edit');
+Route::delete('absensi/index/absensiDelete/{id}', [AbsensiController::class, 'destroy']);
+Route::put('absensi/index/absensiUpdate/{id}', [AbsensiController::class, 'update']);
+
 
 require __DIR__.'/auth.php';
