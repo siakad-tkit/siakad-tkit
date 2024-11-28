@@ -153,11 +153,11 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tabel Kegiatan</h6>
+              <h6>Tagihan</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-              <a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-kegiatan" style="margin-left:15px;">Tambah Data kegiatan</a>
+              <a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-kegiatan" style="margin-left:15px;">Tambah Data</a>
             <br><br>
             <table class="table table-bordered table-striped" id="laravel_11_datatable">
                 <thead>
@@ -169,21 +169,20 @@
                         <th>Nama Kegiatan</th>
                         <th>Aksi</th>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($kegiatans as $kegiatan)
-                    <tr id="index_{{ $kegiatan->id }}">
+                 <tbody>
+                    @foreach ($tagihans as $tagihan)
+                    <tr id="index_{{ $tagihan->id }}">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $kegiatan->bulan }}</td>
-                        <td>{{ $kegiatan->minggu }}</td>
-                        <td>{{ $kegiatan->hari }}, {{ $kegiatan->tanggal }}</td>
-                        <td>{{ $kegiatan->kegiatan }}</td>
+                        <td>{{ $tagihan->bulan }}</td>
+                        <td>{{ $tagihan->minggu }}</td>
+                        <td>{{ $tagihan->hari }}, {{ $tagihan->tanggal }}</td>
+                        <td>{{ $tagihan->tagihan }}</td>
                         <td>
-                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $kegiatan->id }}" class="btn btn-primary">
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $tagihan->id }}" class="btn btn-primary">
                               <i class="fa fa-pencil-alt"></i>
                             </a>
 
-                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $kegiatan->id }}" class="btn btn-danger">
+                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $tagihan->id }}" class="btn btn-danger">
                               <i class="fa fa-trash-alt"></i>
                             </a>
                         </td>
@@ -191,7 +190,8 @@
                     @endforeach
                 </tbody>
             </table>
-
+</thead>
+               
             <!-- Modal -->
             <div class="modal fade" id="ajax-kegiatan-modal" aria-hidden="true">
                 <div class="modal-dialog">
