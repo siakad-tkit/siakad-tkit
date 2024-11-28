@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('tagihans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('siswa_id')->constrained('siswas')->onDelete('cascade');
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');
             $table->string('bulan');
             $table->string('jenis');
             $table->string('nominal');
             $table->string('status');
-            $table->string('tanggal');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }
