@@ -14,6 +14,8 @@ class GuruController extends Controller
         return view('guru.index', compact('gurus'));
     }
 
+    
+
     public function create()
     {
         return view('guru.create');
@@ -38,7 +40,7 @@ class GuruController extends Controller
             'email' => 'required|email|unique:gurus,email',
             'mulai_kerja' => 'required|date',
         ]);
-        
+
         $fotoPath = null;
         if ($request->hasFile('foto')) {
             $fotoPath = $request->file('foto')->store('foto-guru', 'public');
@@ -80,7 +82,7 @@ class GuruController extends Controller
             }
 
             $fotoPath = $request->file('foto')->store('foto-guru', 'public');
-            $guru->foto = $fotoPath; 
+            $guru->foto = $fotoPath;
 
             $guru->update([
                 'nama' => $request->nama,

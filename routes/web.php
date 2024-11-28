@@ -30,6 +30,7 @@ Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create
 Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
 Route::get('guru/{id}/edit', [GuruController::class, 'edit'])->name('guru.edit');
 
+
 Route::resource('/siswa', \App\Http\Controllers\SiswaController::class);
 Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
 Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
@@ -64,5 +65,12 @@ Route::post('tagihan/index/tagihanStore', [TagihanController::class, 'store'])->
 Route::get('tagihan/index/tagihanEdit/{id}', [TagihanController::class, 'edit'])->name('tagihan.edit');
 Route::delete('tagihan/index/tagihanDelete/{id}', [TagihanController::class, 'destroy']);
 Route::put('tagihan/index/tagihanUpdate/{id}', [TagihanController::class, 'update']);
+
+Route::resource('/penugasan', \App\Http\Controllers\PenugasanController::class);
+Route::get('/penugasan', [PenugasanController::class, 'index'])->name('penugasan.index');
+Route::post('penugasan/index/penugasanStore', [PenugasanController::class, 'store'])->name('penugasan.store');
+Route::get('penugasan/index/penugasanEdit/{id}', [PenugasanController::class, 'edit'])->name('penugasan.edit');
+Route::delete('penugasan/index/penugasanDelete/{id}', [PenugasanController::class, 'destroy']);
+Route::put('penugasan/index/penugasanUpdate/{id}', [PenugasanController::class, 'update']);
 
 require __DIR__.'/auth.php';

@@ -87,7 +87,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('akademik.index') }}">
+          <a class="nav-link" href="{{ route('akademik.index') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
@@ -103,7 +103,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('penugasan.index') }}">
+            <a class="nav-link active" href="{{ route('penugasan.index') }}">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
               </div>
@@ -153,33 +153,33 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tabel Akademik</h6>
+              <h6>Tabel penugasan</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-              <a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-akademik" style="margin-left:15px;">Tambah Data akademik</a>
+              <a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-penugasan" style="margin-left:15px;">Tambah Data penugasan</a>
             <br><br>
             <table class="table table-bordered table-striped" id="laravel_11_datatable">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Tahun Akademik</th>
-                        <th>Nama Semester</th>
+                        <th>Nama Guru</th>
+                        <th>Nama Kelas</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($akademiks as $akademik)
-                    <tr id="index_{{ $akademik->id }}">
+                    @foreach ($penugasans as $penugasan)
+                    <tr id="index_{{ $penugasan->id }}">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $akademik->tahun }}</td>
-                        <td>{{ $akademik->nama }}</td>
+                        <td>{{ $penugasan->guru->nama ?? 'Tidak Ada' }}</td>
+                        <td>{{ $penugasan->kelas->nama ?? 'Tidak Ada' }}</td>
                         <td>
-                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $akademik->id }}" class="btn btn-primary">
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $penugasan->id }}" class="btn btn-primary">
                               <i class="fa fa-pencil-alt"></i>
                             </a>
 
-                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $akademik->id }}" class="btn btn-danger">
+                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $penugasan->id }}" class="btn btn-danger">
                               <i class="fa fa-trash-alt"></i>
                             </a>
                         </td>
@@ -189,32 +189,38 @@
             </table>
 
             <!-- Modal -->
-            <div class="modal fade" id="ajax-akademik-modal" aria-hidden="true">
+            <div class="modal fade" id="ajax-penugasan-modal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="akademikCrudModal"></h4>
+                            <h4 class="modal-title" id="penugasanCrudModal"></h4>
                         </div>
                         <div class="modal-body">
-                            <form id="akademikForm" name="akademikForm" class="form-horizontal">
-                                <input type="hidden" name="akademik_id" id="akademik_id">
+                            <form id="penugasanForm" name="penugasanForm" class="form-horizontal">
+                                <input type="hidden" name="penugasan_id" id="penugasan_id">
                                 <div class="form-group">
-                                    <label for="tahun" class="col-sm-3 control-label">Tahun Akademik</label>
+                                    <label for="guru_id" class="col-sm-3 control-label">Guru</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Masukkan Tahun akademik" required>
+                                        <select class="form-control" id="guru_id" name="guru_id" required>
+                                            <option value="" disabled selected>Pilih Guru</option>
+                                            @foreach(App\Models\Guru::all() as $guru)
+                                                <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
+                            
                                 <div class="form-group">
-                                  <label for="nama" class="col-sm-3 control-label">Nama Semester</label>
-                                  <div class="col-sm-12">
-                                      <select class="form-control" id="nama" name="nama" required>
-                                          <option value="" disabled selected>Pilih Semester</option>
-                                          <option value="Ganjil">Ganjil</option>
-                                          <option value="Genap">Genap</option>
-                                      </select>
-                                  </div>
+                                    <label for="kelas_id" class="col-sm-3 control-label">Kelas</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="kelas_id" name="kelas_id" required>
+                                            <option value="" disabled selected>Pilih Kelas</option>
+                                            @foreach(App\Models\Kelas::all() as $kelas)
+                                                <option value="{{ $kelas->id }}">{{ $kelas->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary" id="btn-save" value="create">Simpan</button>
                                 </div>
@@ -258,24 +264,24 @@
 
         $('#laravel_11_datatable').DataTable();
 
-        $('#create-new-akademik').click(function() {
-            $('#btn-save').val("create-akademik");
-            $('#akademik_id').val('');
-            $('#akademikForm').trigger("reset");
-            $('#akademikCrudModal').html("Tambah Data Akademik");
-            $('#ajax-akademik-modal').modal('show');
+        $('#create-new-penugasan').click(function() {
+            $('#btn-save').val("create-penugasan");
+            $('#penugasan_id').val('');
+            $('#penugasanForm').trigger("reset");
+            $('#penugasanCrudModal').html("Tambah Data Penugasan");
+            $('#ajax-penugasan-modal').modal('show');
             $('#modal-preview').attr('src', 'https://via.placeholder.com/150').addClass('hidden');
         });
 
         $('body').on('click', '#btn-edit-post', function() {
         var id = $(this).data('id');
-        $.get(SITEURL + 'akademik/index/akademikEdit/' + id, function(data) {
-            $('#akademikCrudModal').html("Edit Data Akademik");
-            $('#btn-save').val("edit-akademik");
-            $('#ajax-akademik-modal').modal('show');
-            $('#akademik_id').val(data.id);
-            $('#tahun').val(data.tahun);
-            $('#nama').val(data.nama);
+        $.get(SITEURL + 'penugasan/index/penugasanEdit/' + id, function(data) {
+            $('#penugasanCrudModal').html("Edit Data Penugasan");
+            $('#btn-save').val("edit-penugasan");
+            $('#ajax-penugasan-modal').modal('show');
+            $('#penugasan_id').val(data.id);
+            $('#guru_id').val(data.guru_id);
+            $('#kelas_id').val(data.kelas_id);
           });
         });
 
@@ -285,7 +291,7 @@
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
                     type: "DELETE",
-                    url: SITEURL + "akademik/index/akademikDelete/" + id,
+                    url: SITEURL + "penugasan/index/penugasanDelete/" + id,
                     success: function(data) {
                         console.log("Data berhasil dihapus:", data);
                         var oTable = $('#laravel_11_datatable').DataTable();
@@ -298,22 +304,22 @@
             }
         });
 
-        $('body').on('submit', '#akademikForm', function(e) {
+        $('body').on('submit', '#penugasanForm', function(e) {
         e.preventDefault();
 
-        var id = $('#akademik_id').val();
+        var id = $('#penugasan_id').val();
         var actionType = $('#btn-save').val();
         var formData = $(this).serialize();
 
         $('#btn-save').html('Menyimpan..');
 
         $.ajax({
-            type: actionType === "edit-akademik" ? 'PUT' : 'POST',
-            url: actionType === "edit-akademik" ? SITEURL + 'akademik/index/akademikUpdate/' + id : SITEURL + 'akademik/index/akademikStore',
+            type: actionType === "edit-penugasan" ? 'PUT' : 'POST',
+            url: actionType === "edit-penugasan" ? SITEURL + 'penugasan/index/penugasanUpdate/' + id : SITEURL + 'penugasan/index/penugasanStore',
             data: formData,
             success: function(response) {
-                $('#akademikForm').trigger("reset");
-                $('#ajax-akademik-modal').modal('hide');
+                $('#penugasanForm').trigger("reset");
+                $('#ajax-penugasan-modal').modal('hide');
                 $('#btn-save').html('Simpan');
                 location.reload();
             },
