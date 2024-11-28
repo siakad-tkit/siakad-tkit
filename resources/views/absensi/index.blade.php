@@ -173,6 +173,7 @@
                     @foreach ($absensis as $absensi)
                     <tr id="index_{{ $absensi->id }}">
                         <td>{{ $loop->iteration }}</td>
+                        <td>{{ $absensi->tanggal }}</td>
                         <td>{{ $absensi->siswa->nama ?? 'Tidak Ada' }}</td>
                         <td>{{ $absensi->kelas->nama ?? 'Tidak Ada' }}</td>
                         <td>
@@ -200,12 +201,19 @@
                             <form id="absensiForm" name="absensiForm" class="form-horizontal">
                                 <input type="hidden" name="absensi_id" id="absensi_id">
                                 <div class="form-group">
-                                    <label for="guru_id" class="col-sm-3 control-label">Guru</label>
+                                    <label for="tanggal" class="col-sm-3 control-label">Tanggal</label>
                                     <div class="col-sm-12">
-                                        <select class="form-control" id="guru_id" name="guru_id" required>
-                                            <option value="" disabled selected>Pilih Guru</option>
-                                            @foreach(App\Models\Guru::all() as $guru)
-                                                <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                                        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="siswa_id" class="col-sm-3 control-label">Nama Siswa</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="siswa_id" name="siswa_id" required>
+                                            <option value="" disabled selected>Pilih Nama Siswa</option>
+                                            @foreach(App\Models\Siswa::all() as $siswa)
+                                                <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -269,7 +277,7 @@
             $('#btn-save').val("create-absensi");
             $('#absensi_id').val('');
             $('#absensiForm').trigger("reset");
-            $('#absensiCrudModal').html("Tambah Data absensi");
+            $('#absensiCrudModal').html("Tambah Data Absensi");
             $('#ajax-absensi-modal').modal('show');
             $('#modal-preview').attr('src', 'https://via.placeholder.com/150').addClass('hidden');
         });
@@ -277,11 +285,12 @@
         $('body').on('click', '#btn-edit-post', function() {
         var id = $(this).data('id');
         $.get(SITEURL + 'absensi/index/absensiEdit/' + id, function(data) {
-            $('#absensiCrudModal').html("Edit Data absensi");
+            $('#absensiCrudModal').html("Edit Data Absensi");
             $('#btn-save').val("edit-absensi");
             $('#ajax-absensi-modal').modal('show');
             $('#absensi_id').val(data.id);
-            $('#guru_id').val(data.guru_id);
+            $('#tanggal').val(data.tanggal);
+            $('#siswa_id').val(data.siswa_id);
             $('#kelas_id').val(data.kelas_id);
           });
         });

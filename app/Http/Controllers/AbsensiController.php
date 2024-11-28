@@ -19,7 +19,6 @@ class AbsensiController extends Controller
 
     public function fetchabsensi()
     {
-        // Mengambil data absensis dengan relasi guru dan kelas
         $absensis = Absensi::with(['siswa', 'kelas'])->get();
 
         return response()->json(['data' => $absensis]);
@@ -28,8 +27,8 @@ class AbsensiController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'tanggal' => 'required',
-            'guru_id' => 'required|exists:gurus,id',
+            'tanggal' => 'required|date',
+            'siswa_id' => 'required|exists:siswas,id',
             'kelas_id' => 'required|exists:kelas,id',
         ]);
 
@@ -48,7 +47,7 @@ class AbsensiController extends Controller
     {
         $request->validate([
             'tanggal' => 'required',
-            'guru_id' => 'required|exists:gurus,id',
+            'siswa_id' => 'required|exists:siswas,id',
             'kelas_id' => 'required|exists:kelas,id',
         ]);
 
@@ -56,7 +55,7 @@ class AbsensiController extends Controller
 
         $absensis->update([
             'tanggal' => $request->tanggal,
-            'guru_id' => $request->guru_id,
+            'siswa_id' => $request->siswa_id,
             'kelas_id' => $request->kelas_id,
         ]);
 

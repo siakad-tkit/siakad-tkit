@@ -174,6 +174,7 @@
                         <th>No</th>
                         <th>Nama Kelas</th>
                         <th>Jumlah Siswa</th>
+                        <th>ID Penugasan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -183,6 +184,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $kelas->nama }}</td>
                         <td>{{ $kelas->jml_siswa }}</td>
+                        <td>{{ $kelas->penugasan->nama ?? 'Tidak Ada' }}</td>
                         <td>
                             <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $kelas->id }}" class="btn btn-primary">
                               <i class="fa fa-pencil-alt"></i>
@@ -208,17 +210,38 @@
                             <form id="kelasForm" name="kelasForm" class="form-horizontal">
                                 <input type="hidden" name="kelas_id" id="kelas_id">
                                 <div class="form-group">
-                                    <label for="name" class="col-sm-2 control-label">Nama Kelas</label>
+                                    <label for="nama" class="col-sm-2 control-label">Nama Kelas</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Kelas" required>
+                                        <select class="form-control" id="nama" name="nama" required>
+                                            <option value="">Pilih Kelas</option>
+                                            <option value="A1">A1</option>
+                                            <option value="A2">A2</option>
+                                            <option value="A3">A3</option>
+                                            <option value="B1">B1</option>
+                                            <option value="B2">B2</option>
+                                            <option value="B3">B3</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                   <div class="form-group">
                                     <label for="jml_siswa" class="col-sm-3 control-label">Jumlah Siswa</label>
                                     <div class="col-sm-12">
                                         <input type="number" class="form-control" id="jml_siswa" name="jml_siswa" placeholder="Masukkan Jumlah Siswa" required>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="penugasan_id" class="col-sm-3 control-label">Nama Siswa</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="penugasan_id" name="penugasan_id" required>
+                                            <option value="" disabled selected>Pilih Nama Siswa</option>
+                                            @foreach(App\Models\Penugasan::all() as $penugasan)
+                                                <option value="{{ $penugasan->id }}">{{ $penugasan->id }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary" id="btn-save" value="create">Simpan</button>
                                 </div>
@@ -280,6 +303,7 @@
             $('#kelas_id').val(data.id);
             $('#nama').val(data.nama);
             $('#jml_siswa').val(data.jml_siswa);
+            $('#penugasan_id').val(data.penugasan_id);
           });
         });
 

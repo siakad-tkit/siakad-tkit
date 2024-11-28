@@ -17,7 +17,7 @@ class KelasController extends Controller
         }
 
         $kelas = Kelas::all();
-        return view('kelas.index', compact('kelas')); 
+        return view('kelas.index', compact('kelas'));
     }
 
     public function store(Request $request)

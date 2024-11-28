@@ -199,7 +199,7 @@
                             <form id="penugasanForm" name="penugasanForm" class="form-horizontal">
                                 <input type="hidden" name="penugasan_id" id="penugasan_id">
                                 <div class="form-group">
-                                    <label for="guru_id" class="col-sm-3 control-label">Guru</label>
+                                    <label for="guru_id" class="col-sm-3 control-label">Nama Guru</label>
                                     <div class="col-sm-12">
                                         <select class="form-control" id="guru_id" name="guru_id" required>
                                             <option value="" disabled selected>Pilih Guru</option>
@@ -209,7 +209,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            
+
                                 <div class="form-group">
                                     <label for="kelas_id" class="col-sm-3 control-label">Kelas</label>
                                     <div class="col-sm-12">

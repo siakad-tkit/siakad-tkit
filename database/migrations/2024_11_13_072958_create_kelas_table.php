@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->integer('jml_siswa');
+            $table->foreignId('penugasan_id')->constrained('penugasans')->onDelete('cascade');
             $table->timestamps();
         });
     }
