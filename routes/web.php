@@ -40,6 +40,7 @@ Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.d
 Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
 Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
 Route::get('siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+Route::get('siswa/{id}/show', [SiswaController::class, 'show'])->name('siswa.show');
 
 Route::resource('/kelas', \App\Http\Controllers\KelasController::class);
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');

@@ -10,8 +10,13 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $siswas = Siswa::latest()->paginate(5);
-        return view('siswa.index', compact('siswas'));
+        //searching siswa
+        if(request()->has('search')){
+            $siswas = Siswa::where('nama', 'LIKE', '%'.request('search').'%')->paginate(10);
+        }else{
+            $siswas = Siswa::paginate(5);
+        }
+        return view('siswa.index', ['siswas' => $siswas]);
     }
 
     public function create()
@@ -84,7 +89,7 @@ class SiswaController extends Controller
             }
 
             $fotoPath = $request->file('foto')->store('foto-siswa', 'public');
-            $siswa->foto = $fotoPath; 
+            $siswa->foto = $fotoPath;
 
             $siswa->update([
                 'nama' => $request->nama,
@@ -131,5 +136,11 @@ class SiswaController extends Controller
         $siswa->delete();
 
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil dihapus');
+    }
+    //detail view data siswa
+    public function show($siswa)
+    {
+            $siswa = Siswa::findOrFail($siswa);
+            return view('siswa.show', ['siswa' => $siswa]);
     }
 }
