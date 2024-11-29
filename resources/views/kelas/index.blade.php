@@ -34,14 +34,17 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
-         width="40px"
-         height="40px"
-         style="display: block; margin: 0 auto;"
+        <a href="{{ route('welcome') }}">
+          <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
+         class="w-15 h-15 block mx-auto mt-3"
          alt="main_logo">
-    <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
-        SIAKAD TKIT Darul Falah Solo Baru
-    </span>
+
+    
+        </a>
+        <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
+          SIAKAD 
+          <p style=" font-weight:bold; font-size: 12px;">TKIT Darul Falah Solo Baru</p>
+      </span>
 </div>
     </div>
     <hr class="horizontal dark mt-0">

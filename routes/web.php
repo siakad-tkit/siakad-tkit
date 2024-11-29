@@ -13,7 +13,9 @@ use App\Http\Controllers\AbsensiController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {return view('welcome'); });
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 
 Route::get('/dashboard-tkit', function () {return view('dashboard-tkit');
 })->middleware(['auth', 'verified'])->name('dashboard-tkit');
