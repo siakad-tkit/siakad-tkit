@@ -30,8 +30,17 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-        <img src="{{ asset('adminpage/assets/img/logos/logotk.png') }}" width="40px" height="40px" alt="main_logo">
-        <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">SIAKAD TKIT Darul Falah Solo Baru</span>
+        <a href="{{ route('welcome') }}">
+          <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
+         class="w-15 h-15 block mx-auto mt-3"
+         alt="main_logo">
+
+    
+        </a>
+        <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
+          SIAKAD 
+          <p style=" font-weight:bold; font-size: 12px;">TKIT Darul Falah Solo Baru</p>
+      </span>
       </div>
     </div>
     <hr class="horizontal dark mt-0">
@@ -219,7 +228,23 @@
                           </div>
                           <div class="form-group">
                             <label for="bulan" class="control-label">Bulan</label>
-                            <input type="text" class="form-control" id="bulan" name="bulan" placeholder="Masukkan Bulan" required>
+                            <div class="col-sm-12">
+                              <select class="form-control" id="bulan" name="bulan" required>
+                                  <option value="">Pilih Bulan</option>
+                                  <option value="Januari">Januari</option>
+                                  <option value="Februari">Februari</option>
+                                  <option value="Maret">Maret</option>
+                                  <option value="April">April</option>
+                                  <option value="Mei">Mei</option>
+                                  <option value="Juni">Juni</option>
+                                  <option value="Juli">Juli</option>
+                                  <option value="Agustus">Agustus</option>
+                                  <option value="September">September</option>
+                                  <option value="Oktober">Oktober</option>
+                                  <option value="November">November</option>
+                                  <option value="Desember">Desember</option>
+                              </select>
+                          </div>
                           </div>
                           <div class="form-group">
                             <label for="jenis" class="control-label">Jenis</label>
@@ -231,7 +256,11 @@
                           </div>
                           <div class="form-group">
                             <label for="status" class="control-label">Status</label>
-                            <input type="text" class="form-control" id="status" name="status" placeholder="Masukkan Status" required>
+                            <select class="form-control" id="bulan" name="bulan" required>
+                              <option value="">Pilih Status pembayaran</option>
+                              <option value="Januari">Lunas</option>
+                              <option value="Februari">Belum lunas</option>
+                          </select>
                           </div>
                           <div class="form-group">
                             <label for="tanggal" class="control-label">Tanggal</label>
