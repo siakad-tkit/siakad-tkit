@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+
 Route::get('/dashboard-tkit', function () {return view('dashboard-tkit');
 })->middleware(['auth', 'verified'])->name('dashboard-tkit');
 
@@ -32,6 +33,7 @@ Route::delete('/guru/{id}', [GuruController::class, 'destroy'])->name('guru.dest
 Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
 Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
 Route::get('guru/{id}/edit', [GuruController::class, 'edit'])->name('guru.edit');
+Route::get('guru/{id}/show', [GuruController::class, 'show'])->name('guru.show');
 
 
 Route::resource('/siswa', \App\Http\Controllers\SiswaController::class);
@@ -41,6 +43,7 @@ Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.cre
 Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
 Route::get('siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
 Route::get('siswa/{id}/show', [SiswaController::class, 'show'])->name('siswa.show');
+Route::get('/siswa/export', [SiswaController::class, 'exportExcel'])->name('siswa.export');
 
 Route::resource('/kelas', \App\Http\Controllers\KelasController::class);
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');

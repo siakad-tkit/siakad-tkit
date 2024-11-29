@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\SiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class SiswaController extends Controller
@@ -142,5 +144,10 @@ class SiswaController extends Controller
     {
             $siswa = Siswa::findOrFail($siswa);
             return view('siswa.show', ['siswa' => $siswa]);
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new SiswaExport, 'data-siswa.xlsx');
     }
 }

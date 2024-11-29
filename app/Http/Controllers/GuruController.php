@@ -14,7 +14,7 @@ class GuruController extends Controller
         return view('guru.index', compact('gurus'));
     }
 
-    
+
 
     public function create()
     {
@@ -131,4 +131,11 @@ class GuruController extends Controller
 
         return redirect()->route('guru.index')->with('success', 'Data guru berhasil dihapus');
     }
+
+    public function show($guru)
+    {
+            $guru = Guru::findOrFail($guru);
+            return view('guru.show', ['guru' => $guru]);
+    }
+
 }
