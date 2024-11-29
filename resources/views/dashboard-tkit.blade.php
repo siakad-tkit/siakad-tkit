@@ -36,7 +36,7 @@
       <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
          class="w-10 h-10 block mx-auto mt-3"
          alt="main_logo">
-  
+
     <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
         SIAKAD TKIT Darul Falah Solo Baru
     </span>
@@ -170,13 +170,16 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Siswa</p>
                     <h5 class="font-weight-bolder">
-                      $53,000
+                        @php
+                            $siswa = App\Models\Siswa::count();
+                            echo $siswa;
+                        @endphp
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+55%</span>
-                      since yesterday
+                      <span class="text-success text-sm font-weight-bolder"></span>
+                      Total Data Siswa
                     </p>
                   </div>
                 </div>
@@ -195,13 +198,16 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Guru</p>
                     <h5 class="font-weight-bolder">
-                      2,300
+                        @php
+                            $guru = App\Models\Guru::count();
+                            echo $guru;
+                        @endphp
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
-                      since last week
+                      <span class="text-success text-sm font-weight-bolder"></span>
+                      Total Data Guru
                     </p>
                   </div>
                 </div>
@@ -220,13 +226,16 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Kelas</p>
                     <h5 class="font-weight-bolder">
-                      +3,462
+                     @php
+                            $kelas = App\Models\Kelas::count();
+                            echo $kelas;
+                        @endphp
                     </h5>
                     <p class="mb-0">
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                      since last quarter
+                      <span class="text-danger text-sm font-weight-bolder"></span>
+                     Total data kelas
                     </p>
                   </div>
                 </div>
@@ -245,12 +254,15 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Kegiatan</p>
                     <h5 class="font-weight-bolder">
-                      $103,430
+                      @php
+                            $kegiatan = App\Models\Kegiatan::count();
+                            echo $kegiatan;
+                        @endphp
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
+                      <span class="text-success text-sm font-weight-bolder"></span> Data kegiatan
                     </p>
                   </div>
                 </div>
