@@ -29,7 +29,7 @@ class TagihanController extends Controller
             'bulan' => 'required|string',
             'jenis' => 'required|string',
             'nominal' => 'required|numeric',
-            'status' => 'required|string',
+            'status' => 'required',
             'tanggal' => 'required|date',
         ]);
 
@@ -55,7 +55,7 @@ class TagihanController extends Controller
             'bulan' => 'required|string',
             'jenis' => 'required|string',
             'nominal' => 'required|numeric',
-            'status' => 'required|string',
+            'status' => 'required',
             'tanggal' => 'required|date',
         ]);
 
