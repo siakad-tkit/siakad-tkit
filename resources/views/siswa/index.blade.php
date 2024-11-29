@@ -38,10 +38,10 @@
          class="w-15 h-15 block mx-auto mt-3"
          alt="main_logo">
 
-    
+
         </a>
         <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
-          SIAKAD 
+          SIAKAD
           <p style=" font-weight:bold; font-size: 12px;">TKIT Darul Falah Solo Baru</p>
       </span>
 </div>
@@ -177,6 +177,7 @@
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
               <a href="{{ route('siswa.create') }}" class="btn btn-info ml-3" style="padding-left:20px; margin-left: 20px;">TAMBAH DATA SISWA</a>
+              <a href="{{ route('siswa.export') }}" class="btn btn-success">Download Excel</a>
                         <div class="form-group>
                           <form action="{{ route('siswa.index') }}" method="GET" class="d-flex">
                             <label for="search">Search</label>
@@ -316,7 +317,7 @@
                         <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('siswa.destroy', $siswa->id) }}" method="POST">
                           <!-- Tombol Edit -->
                             <a href="{{ route('siswa.show', $siswa->id) }}" class="btn btn-info">
-                                <i class="fa fa-eye"></i>
+                                <i class="fa fa-eye"></i></a>   
                           <a href="{{ route('siswa.edit', $siswa->id) }}" class="btn btn-primary">
                             <i class="fa fa-pencil-alt"></i> <!-- Ikon Pensil -->
                           </a>

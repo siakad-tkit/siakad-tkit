@@ -38,10 +38,10 @@
          class="w-15 h-15 block mx-auto mt-3"
          alt="main_logo">
 
-    
+
         </a>
         <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
-          SIAKAD 
+          SIAKAD
           <p style=" font-weight:bold; font-size: 12px;">TKIT Darul Falah Solo Baru</p>
       </span>
 </div>
@@ -186,13 +186,13 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Lengkap</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">NIP</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">NUPTK</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Tempat Tanggal Lahir</th>
+                      {{--<th class="text-uppercase text-secondary text-xxs font-weight-bolder">Tempat Tanggal Lahir</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Agama</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Status Nikah</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Jenis Kelamin</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Alamat</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">No Tlp</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Email</th>--}}
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Tahun Masuk Kerja</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Aksi</th>
                     </tr>
@@ -242,7 +242,7 @@
                           </div>
                         <div>
                       </td>
-                      <td>
+                     {{--}} <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs text-secondary mb-0">{{ $guru->tempat_lahir }}, {{ $guru->tanggal_lahir }}</p>
@@ -290,7 +290,7 @@
                             <p class="text-xs text-secondary mb-0">{{ $guru->email }}</p>
                           </div>
                         <div>
-                      </td>
+                      </td>--}}
                       <td>
                         <div>
                           <div class="d-flex flex-column justify-content-center">
@@ -301,6 +301,8 @@
                       <td class="text-center">
                         <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('guru.destroy', $guru->id) }}" method="POST">
                           <!-- Tombol Edit -->
+                          <a href="{{ route('guru.show', $guru->id) }}" class="btn btn-info">
+                            <i class="fa fa-eye"></i></a>
                           <a href="{{ route('guru.edit', $guru->id) }}" class="btn btn-primary">
                             <i class="fa fa-pencil-alt"></i> <!-- Ikon Pensil -->
                           </a>

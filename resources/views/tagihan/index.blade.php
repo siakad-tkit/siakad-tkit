@@ -35,10 +35,10 @@
          class="w-15 h-15 block mx-auto mt-3"
          alt="main_logo">
 
-    
+
         </a>
         <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
-          SIAKAD 
+          SIAKAD
           <p style=" font-weight:bold; font-size: 12px;">TKIT Darul Falah Solo Baru</p>
       </span>
       </div>
@@ -255,8 +255,12 @@
                           </div>
                           </div>
                           <div class="form-group">
-                            <label for="jenis" class="control-label">Jenis</label>
-                            <input type="text" class="form-control" id="jenis" name="jenis" placeholder="Masukkan Jenis" required>
+                            <label for="jenis" class="control-label">Jenis Tagihan</label>
+                            <select class="form-control" id="jenis" name="jenis" required>
+                              <option value="" disabled selected>Pilih Jenis Tagihan</option>
+                              <option value="SPP">SPP</option>
+                              <option value="Tabungan">Tabungan</option>
+                            </select>
                           </div>
                           <div class="form-group">
                             <label for="nominal" class="control-label">Nominal</label>

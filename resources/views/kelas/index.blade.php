@@ -39,10 +39,10 @@
          class="w-15 h-15 block mx-auto mt-3"
          alt="main_logo">
 
-    
+
         </a>
         <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
-          SIAKAD 
+          SIAKAD
           <p style=" font-weight:bold; font-size: 12px;">TKIT Darul Falah Solo Baru</p>
       </span>
 </div>
@@ -193,7 +193,6 @@
                         <th>No</th>
                         <th>Nama Kelas</th>
                         <th>Jumlah Siswa</th>
-                        <th>ID Penugasan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -203,7 +202,6 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $kelas->nama }}</td>
                         <td>{{ $kelas->jml_siswa }}</td>
-                        <td>{{ $kelas->penugasan->nama ?? 'Tidak Ada' }}</td>
                         <td>
                             <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $kelas->id }}" class="btn btn-primary">
                               <i class="fa fa-pencil-alt"></i>
@@ -246,18 +244,6 @@
                                     <label for="jml_siswa" class="col-sm-3 control-label">Jumlah Siswa</label>
                                     <div class="col-sm-12">
                                         <input type="number" class="form-control" id="jml_siswa" name="jml_siswa" placeholder="Masukkan Jumlah Siswa" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="penugasan_id" class="col-sm-3 control-label">Nama Siswa</label>
-                                    <div class="col-sm-12">
-                                        <select class="form-control" id="penugasan_id" name="penugasan_id" required>
-                                            <option value="" disabled selected>Pilih Nama Siswa</option>
-                                            @foreach(App\Models\Penugasan::all() as $penugasan)
-                                                <option value="{{ $penugasan->id }}">{{ $penugasan->id }}</option>
-                                            @endforeach
-                                        </select>
                                     </div>
                                 </div>
 
@@ -322,7 +308,6 @@
             $('#kelas_id').val(data.id);
             $('#nama').val(data.nama);
             $('#jml_siswa').val(data.jml_siswa);
-            $('#penugasan_id').val(data.penugasan_id);
           });
         });
 
