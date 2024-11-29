@@ -17,6 +17,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
+
 Route::get('/dashboard-tkit', function () {return view('dashboard-tkit');
 })->middleware(['auth', 'verified'])->name('dashboard-tkit');
 
