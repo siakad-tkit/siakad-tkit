@@ -13,7 +13,7 @@
   <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <title>SIAKAD TKIT Darul Falah Solo Baru</title>
-  
+
   <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <link href="{{ asset('adminpage/assets/css/argon-dashboard.css?v=2.1.0') }}" rel="stylesheet" />
@@ -30,8 +30,17 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-        <img src="{{ asset('adminpage/assets/img/logos/logotk.png') }}" width="40px" height="40px" alt="main_logo">
-        <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">SIAKAD TKIT Darul Falah Solo Baru</span>
+        <a href="{{ route('welcome') }}">
+          <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
+         class="w-15 h-15 block mx-auto mt-3"
+         alt="main_logo">
+
+    
+        </a>
+        <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
+          SIAKAD 
+          <p style=" font-weight:bold; font-size: 12px;">TKIT Darul Falah Solo Baru</p>
+      </span>
       </div>
     </div>
     <hr class="horizontal dark mt-0">
@@ -58,7 +67,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Guru</span>
+            <span class="nav-link-text ms-1">Data Guru</span>
           </a>
         </li>
         <li class="nav-item">
@@ -66,7 +75,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Siswa</span>
+            <span class="nav-link-text ms-1">Data Siswa</span>
           </a>
         </li>
         <li class="nav-item">
@@ -74,7 +83,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Kelas</span>
+            <span class="nav-link-text ms-1">Data Kelas</span>
           </a>
         </li>
         <li class="nav-item">
@@ -82,7 +91,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Akademik</span>
+            <span class="nav-link-text ms-1">Data Akademik</span>
           </a>
         </li>
         <li class="nav-item">
@@ -90,7 +99,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Kegiatan</span>
+            <span class="nav-link-text ms-1">Data Kegiatan</span>
           </a>
         </li>
         <li class="nav-item">
@@ -98,7 +107,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Penugasan</span>
+            <span class="nav-link-text ms-1">Penugasan</span>
           </a>
         </li>
         <li class="nav-item">
@@ -108,6 +117,14 @@
             </div>
             <span class="nav-link-text ms-1">Tagihan</span>
           </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  " href="{{ route('absensi.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Absensi</span>
+            </a>
         </li>
         <li class="nav-item">
           <form method="POST" action="{{ route('logout') }}" class="nav-link">
@@ -219,7 +236,23 @@
                           </div>
                           <div class="form-group">
                             <label for="bulan" class="control-label">Bulan</label>
-                            <input type="text" class="form-control" id="bulan" name="bulan" placeholder="Masukkan Bulan" required>
+                            <div class="col-sm-12">
+                              <select class="form-control" id="bulan" name="bulan" required>
+                                  <option value="">Pilih Bulan</option>
+                                  <option value="Januari">Januari</option>
+                                  <option value="Februari">Februari</option>
+                                  <option value="Maret">Maret</option>
+                                  <option value="April">April</option>
+                                  <option value="Mei">Mei</option>
+                                  <option value="Juni">Juni</option>
+                                  <option value="Juli">Juli</option>
+                                  <option value="Agustus">Agustus</option>
+                                  <option value="September">September</option>
+                                  <option value="Oktober">Oktober</option>
+                                  <option value="November">November</option>
+                                  <option value="Desember">Desember</option>
+                              </select>
+                          </div>
                           </div>
                           <div class="form-group">
                             <label for="jenis" class="control-label">Jenis</label>
@@ -231,7 +264,11 @@
                           </div>
                           <div class="form-group">
                             <label for="status" class="control-label">Status</label>
-                            <input type="text" class="form-control" id="status" name="status" placeholder="Masukkan Status" required>
+                            <select class="form-control" id="bulan" name="bulan" required>
+                              <option value="">Pilih Status pembayaran</option>
+                              <option value="Januari">Lunas</option>
+                              <option value="Februari">Belum lunas</option>
+                          </select>
                           </div>
                           <div class="form-group">
                             <label for="tanggal" class="control-label">Tanggal</label>
@@ -329,8 +366,8 @@
             var id = $('#tagihan_id').val();
             var actionType = $('#btn-save').val();
             var formData = $(this).serialize();
-            
-            
+
+
             $('#btn-save').html('Menyimpan..');
             $.ajax({
               type: actionType === "edit-tagihan" ? 'PUT' : 'POST',

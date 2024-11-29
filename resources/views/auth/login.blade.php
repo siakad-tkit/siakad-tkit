@@ -56,13 +56,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white min-h-screen flex items-center justify-center">
-   <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-20 h-20 mt-6 bg-white rounded-full shadow-md flex items-center justify-center">
-      <img
-        src="{{asset('adminpage')}}/assets/img/logos/logo-landingpage.png"
-        alt="Logo"
-        class="w-18 h-18 "
-      />
-   </div>
    <div class="w-3/4 max-w-4xl bg-white shadow-lg rounded-lg flex overflow-hidden">
 
     <!-- Bagian Kiri: Form Login -->
@@ -108,7 +101,7 @@
     <!-- Bagian Kanan: Ilustrasi -->
       <div class="w-1/2 bg-blue-100 relative p-8 flex items-center justify-center">
       <img
-        src="{{asset('adminpage')}}/assets/img/login-illus.png"
+        src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
         alt="Illustration"
         class="max-w-sm "
       />

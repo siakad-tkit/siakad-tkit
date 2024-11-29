@@ -33,14 +33,17 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
-         width="40px"
-         height="40px"
-         style="display: block; margin: 0 auto;"
+        <a href="{{ route('welcome') }}">
+          <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
+         class="w-15 h-15 block mx-auto mt-3"
          alt="main_logo">
-    <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
-        SIAKAD TKIT Darul Falah Solo Baru
-    </span>
+
+    
+        </a>
+        <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
+          SIAKAD 
+          <p style=" font-weight:bold; font-size: 12px;">TKIT Darul Falah Solo Baru</p>
+      </span>
 </div>
     </div>
     <hr class="horizontal dark mt-0">
@@ -118,6 +121,14 @@
             <span class="nav-link-text ms-1">Tagihan</span>
           </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link  " href="{{ route('absensi.index') }}">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Absensi</span>
+        </a>
+    </li>
         <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-link">
                     @csrf
