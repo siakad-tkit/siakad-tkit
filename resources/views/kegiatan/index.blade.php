@@ -107,7 +107,7 @@
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
               </div>
-              <span class="nav-link-text ms-1">Tabel Penugasan</span>
+              <span class="nav-link-text ms-1">Penugasan</span>
             </a>
         </li>
         <li class="nav-item">
@@ -117,6 +117,14 @@
                 <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
               </div>
               <span class="nav-link-text ms-1">Tagihan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  " href="{{ route('absensi.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Absensi</span>
             </a>
         </li>
         <form method="POST" action="{{ route('logout') }}" class="nav-link">

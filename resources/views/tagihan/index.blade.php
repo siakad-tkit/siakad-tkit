@@ -13,7 +13,7 @@
   <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <title>SIAKAD TKIT Darul Falah Solo Baru</title>
-  
+
   <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <link href="{{ asset('adminpage/assets/css/argon-dashboard.css?v=2.1.0') }}" rel="stylesheet" />
@@ -58,7 +58,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Guru</span>
+            <span class="nav-link-text ms-1">Data Guru</span>
           </a>
         </li>
         <li class="nav-item">
@@ -66,7 +66,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Siswa</span>
+            <span class="nav-link-text ms-1">Data Siswa</span>
           </a>
         </li>
         <li class="nav-item">
@@ -74,7 +74,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Kelas</span>
+            <span class="nav-link-text ms-1">Data Kelas</span>
           </a>
         </li>
         <li class="nav-item">
@@ -82,7 +82,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Akademik</span>
+            <span class="nav-link-text ms-1">Data Akademik</span>
           </a>
         </li>
         <li class="nav-item">
@@ -90,7 +90,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Kegiatan</span>
+            <span class="nav-link-text ms-1">Data Kegiatan</span>
           </a>
         </li>
         <li class="nav-item">
@@ -98,7 +98,7 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Tabel Penugasan</span>
+            <span class="nav-link-text ms-1">Penugasan</span>
           </a>
         </li>
         <li class="nav-item">
@@ -108,6 +108,14 @@
             </div>
             <span class="nav-link-text ms-1">Tagihan</span>
           </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  " href="{{ route('absensi.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Absensi</span>
+            </a>
         </li>
         <li class="nav-item">
           <form method="POST" action="{{ route('logout') }}" class="nav-link">
@@ -329,8 +337,8 @@
             var id = $('#tagihan_id').val();
             var actionType = $('#btn-save').val();
             var formData = $(this).serialize();
-            
-            
+
+
             $('#btn-save').html('Menyimpan..');
             $.ajax({
               type: actionType === "edit-tagihan" ? 'PUT' : 'POST',

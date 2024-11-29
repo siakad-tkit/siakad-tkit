@@ -33,10 +33,10 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png" 
-         width="40px" 
-         height="40px" 
-         style="display: block; margin: 0 auto;" 
+    <img src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
+         width="40px"
+         height="40px"
+         style="display: block; margin: 0 auto;"
          alt="main_logo">
     <span style="font-weight: bold; font-size: 14px; margin-top: 5px;">
         SIAKAD TKIT Darul Falah Solo Baru
@@ -55,44 +55,76 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/billing.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Master</span>
-          </a>
+            <a class="nav-link " href="../pages/billing.html">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Master</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('guru.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Data Guru</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('siswa.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Data Siswa</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ route('kelas.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Data Kelas</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ route('akademik.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Data Akademik</span>
+            </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link " href="{{ route('kegiatan.index') }}">
+                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Data Kegiatan</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('penugasan.index') }}">
+                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Data Penugasan</span>
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ route('tagihan.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Tagihan</span>
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('guru.index') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Tabel Guru</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="{{ route('siswa.index') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Tabel Siswa</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{{ route('kelas.index') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Tabel Kelas</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{{ route('akademik.index') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Tabel Akademik</span>
-          </a>
+            <a class="nav-link  " href="{{ route('absensi.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Absensi</span>
+            </a>
         </li>
         <li class="nav-item">
         <form method="POST" action="{{ route('logout') }}" class="nav-link">
@@ -112,12 +144,12 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          
+
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          
+
           <ul class="navbar-nav  justify-content-end">
-            
+
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -159,7 +191,7 @@
                                     <img src="{{ Storage::url('').$siswa->foto }}" class="rounded mt-2" style="width: 150px">
                                 @endif
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="font-weight-bold">Nama Lengkap</label>
                                 <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama', $siswa->nama) }}" placeholder="Masukkan Nama Lengkap">
@@ -383,7 +415,7 @@
                 </script>,
                 made with <i class="fa fa-heart"></i> by
                 <a href="" class="font-weight-bold" target="_blank">Tim Pengabdian ITSPKU</a>
-             
+
               </div>
             </div>
           </div>
@@ -391,7 +423,7 @@
       </footer>
     </div>
   </main>
-  
+
       </div>
     </div>
   </div>
