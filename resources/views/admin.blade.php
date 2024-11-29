@@ -14,7 +14,7 @@
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
 
-                <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
+                
             </nav>
 
             <ul class="navbar-nav  justify-content-end">

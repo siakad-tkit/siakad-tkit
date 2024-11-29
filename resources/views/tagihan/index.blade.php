@@ -29,7 +29,6 @@
 <body class="g-sidenav-show bg-gray-100">
   <div class="min-height-300 bg-dark position-absolute w-100"></div>
   @include('partials.sidebar')
-
   <main class="main-content position-relative border-radius-lg ">
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
@@ -147,8 +146,12 @@
                           </div>
                           </div>
                           <div class="form-group">
-                            <label for="jenis" class="control-label">Jenis</label>
-                            <input type="text" class="form-control" id="jenis" name="jenis" placeholder="Masukkan Jenis" required>
+                            <label for="jenis" class="control-label">Jenis Tagihan</label>
+                            <select class="form-control" id="jenis" name="jenis" required>
+                              <option value="" disabled selected>Pilih Jenis Tagihan</option>
+                              <option value="SPP">SPP</option>
+                              <option value="Tabungan">Tabungan</option>
+                            </select>
                           </div>
                           <div class="form-group">
                             <label for="nominal" class="control-label">Nominal</label>
