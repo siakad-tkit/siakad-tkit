@@ -166,7 +166,16 @@
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
               <a href="{{ route('siswa.create') }}" class="btn btn-info ml-3" style="padding-left:20px; margin-left: 20px;">TAMBAH DATA SISWA</a>
-                <table class="table align-items-center mb-0">
+                        <div class="form-group>
+                          <form action="{{ route('siswa.index') }}" method="GET" class="d-flex">
+                            <label for="search">Search</label>
+                            <input type="text" class="form-control" id="search" name="search" placeholder="Search Nama">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </form>
+              </div>
+
+                  </div>
+                          <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Foto</th>
@@ -176,17 +185,17 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">NISN</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Jenis Kelamin</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Tempat Tanggal Lahir</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Agama</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Anak ke</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Ayah</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Ibu</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Pekerjaan Ayah</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Pekerjaan Ibu</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Desa / Kelurahan</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Kecamatan</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Kabupaten</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Provinsi</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">No Tlp</th>
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Agama</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Anak ke</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Ayah</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Ibu</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Pekerjaan Ayah</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Pekerjaan Ibu</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Desa / Kelurahan</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Kecamatan</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Kabupaten</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Provinsi</th>--}}
+{{--                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">No Tlp</th>--}}
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Aksi</th>
                     </tr>
                   </thead>
@@ -242,86 +251,61 @@
                           </div>
                         <div>
                       </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->agama }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->anak_ke }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->ayah }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->ibu }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->pekerjaan_ayah }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->pekerjaan_ibu }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->kelurahan }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->kecamatan }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->kabupaten }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->provinsi }}</p>
-                          </div>
-                        <div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs text-secondary mb-0">{{ $siswa->no }}</p>
-                          </div>
-                        <div>
-                      </td>
+{{--                     cx  --}}
+{{--                      <td>--}}
+{{--                        <div>--}}
+{{--                          <div class="d-flex flex-column justify-content-center">--}}
+{{--                            <p class="text-xs text-secondary mb-0">{{ $siswa->pekerjaan_ayah }}</p>--}}
+{{--                          </div>--}}
+{{--                        <div>--}}
+{{--                      </td>--}}
+{{--                      <td>--}}
+{{--                        <div>--}}
+{{--                          <div class="d-flex flex-column justify-content-center">--}}
+{{--                            <p class="text-xs text-secondary mb-0">{{ $siswa->pekerjaan_ibu }}</p>--}}
+{{--                          </div>--}}
+{{--                        <div>--}}
+{{--                      </td>--}}
+{{--                      <td>--}}
+{{--                        <div>--}}
+{{--                          <div class="d-flex flex-column justify-content-center">--}}
+{{--                            <p class="text-xs text-secondary mb-0">{{ $siswa->kelurahan }}</p>--}}
+{{--                          </div>--}}
+{{--                        <div>--}}
+{{--                      </td>--}}
+{{--                      <td>--}}
+{{--                        <div>--}}
+{{--                          <div class="d-flex flex-column justify-content-center">--}}
+{{--                            <p class="text-xs text-secondary mb-0">{{ $siswa->kecamatan }}</p>--}}
+{{--                          </div>--}}
+{{--                        <div>--}}
+{{--                      </td>--}}
+{{--                      <td>--}}
+{{--                        <div>--}}
+{{--                          <div class="d-flex flex-column justify-content-center">--}}
+{{--                            <p class="text-xs text-secondary mb-0">{{ $siswa->kabupaten }}</p>--}}
+{{--                          </div>--}}
+{{--                        <div>--}}
+{{--                      </td>--}}
+{{--                      <td>--}}
+{{--                        <div>--}}
+{{--                          <div class="d-flex flex-column justify-content-center">--}}
+{{--                            <p class="text-xs text-secondary mb-0">{{ $siswa->provinsi }}</p>--}}
+{{--                          </div>--}}
+{{--                        <div>--}}
+{{--                      </td>--}}
+{{--                      <td>--}}
+{{--                        <div>--}}
+{{--                          <div class="d-flex flex-column justify-content-center">--}}
+{{--                            <p class="text-xs text-secondary mb-0">{{ $siswa->no }}</p>--}}
+{{--                          </div>--}}
+{{--                        <div>--}}
+{{--                      </td>--}}
                       <td class="text-center">
                         <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('siswa.destroy', $siswa->id) }}" method="POST">
                           <!-- Tombol Edit -->
+                            <a href="{{ route('siswa.show', $siswa->id) }}" class="btn btn-info">
+                                <i class="fa fa-eye"></i>
                           <a href="{{ route('siswa.edit', $siswa->id) }}" class="btn btn-primary">
                             <i class="fa fa-pencil-alt"></i> <!-- Ikon Pensil -->
                           </a>
