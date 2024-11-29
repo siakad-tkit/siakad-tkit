@@ -13,6 +13,9 @@
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
   <title>
     SIAKAD TKIT Darul Falah Solo Baru
   </title>
@@ -115,6 +118,14 @@
                 <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
               </div>
               <span class="nav-link-text ms-1">Penugasan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  " href="{{ route('absensi.index') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Absensi</span>
             </a>
         </li>
         <li class="nav-item">
