@@ -124,9 +124,9 @@
                             </select>
                           </div>
                           <div class="form-group">
-                            <label for="akademik_id" class="control-label">Kelas</label>
+                            <label for="akademik_id" class="control-label">Akademik</label>
                             <select class="form-control" id="akademik_id" name="akademik_id" required>
-                              <option value="" disabled selected>Pilih Kelas</option>
+                              <option value="" disabled selected>Pilih Tahun Akademik</option>
                               @foreach (App\Models\Akademik::all() as $akd)
                                   <option value="{{ $akd->id }}">{{ $akd->nama }}</option>
                               @endforeach
