@@ -20,15 +20,13 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <link href="{{ asset('adminpage/assets/css/argon-dashboard.css?v=2.1.0') }}" rel="stylesheet" />
 
-  <!-- Nucleo Icons -->
-  <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
   <div class="min-height-300 bg-dark position-absolute w-100"></div>
   @include('partials.sidebar')
+
   <main class="main-content position-relative border-radius-lg ">
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
@@ -53,11 +51,11 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tagihan</h6>
+              <h6>Penilaian Siswa</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-                <a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-tagihan" style="margin-left:15px;">Tambah Data</a>
+                <a href="javascript:void(0)" class="btn btn-info" id="create-new-nilai" style="margin-left:15px;">Tambah Nilai</a>
                 <br><br>
                 <table class="table table-bordered table-striped" id="laravel_11_datatable">
                   <thead>
@@ -65,30 +63,30 @@
                       <th>No</th>
                       <th>Nama Siswa</th>
                       <th>Kelas</th>
-                      <th>Bulan</th>
-                      <th>Jenis</th>
-                      <th>Nominal</th>
-                      <th>Status</th>
-                      <th>Tanggal</th>
+                      <th>Akademik</th>
+                      <th>Agama dan Budi Pekerti</th>
+                      <th>Jati Diri</th>
+                      <th>Literasi dan STEM</th>
+                      <th>Project Penguatan Profil Pelajar dan Pancasila</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($tagihans as $tagihan)
-                    <tr id="index_{{ $tagihan->id }}">
+                    @foreach ($nilais as $nilai)
+                    <tr id="index_{{ $nilai->id }}">
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $tagihan->siswa->nama ?? 'Tidak Ada' }}</td>
-                      <td>{{ $tagihan->kelas->nama ?? 'Tidak Ada' }}</td>
-                      <td>{{ $tagihan->bulan }}</td>
-                      <td>{{ $tagihan->jenis }}</td>
-                      <td>{{ $tagihan->nominal }}</td>
-                      <td>{{ $tagihan->status }}</td>
-                      <td>{{ $tagihan->tanggal }}</td>
+                      <td>{{ $nilai->siswa->nama ?? 'Tidak Ada' }}</td>
+                      <td>{{ $nilai->kelas->nama ?? 'Tidak Ada' }}</td>
+                      <td>{{ $nilai->akademik->nama ?? 'Tidak Ada' }}</td>                      
+                      <td>{{ $nilai->agama }}</td>
+                      <td>{{ $nilai->jatidiri }}</td>
+                      <td>{{ $nilai->stem }}</td>
+                      <td>{{ $nilai->project }}</td>
                       <td>
-                        <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $tagihan->id }}" class="btn btn-primary">
+                        <a href="javascript:void(0)" id="btn-edit-nilai" data-id="{{ $nilai->id }}" class="btn btn-primary">
                           <i class="fa fa-pencil-alt"></i>
                         </a>
-                        <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $tagihan->id }}" class="btn btn-danger">
+                        <a href="javascript:void(0)" id="btn-delete-nilai" data-id="{{ $nilai->id }}" class="btn btn-danger">
                           <i class="fa fa-trash-alt"></i>
                         </a>
                       </td>
@@ -97,16 +95,16 @@
                   </tbody>
                 </table>
 
-                <div class="modal fade" id="ajax-tagihan-modal" aria-hidden="true">
+                <div class="modal fade" id="ajax-nilai-modal" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h4 class="modal-title" id="tagihanCrudModal"></h4>
+                        <h4 class="modal-title" id="nilaiCrudModal"></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       </div>
                       <div class="modal-body">
-                        <form id="tagihanForm" name="tagihanForm" class="form-horizontal">
-                          <input type="hidden" name="tagihan_id" id="tagihan_id">
+                        <form id="nilaiForm" name="nilaiForm" class="form-horizontal">
+                          <input type="hidden" name="nilai_id" id="nilai_id">
                           <div class="form-group">
                             <label for="siswa_id" class="control-label">Siswa</label>
                             <select class="form-control" id="siswa_id" name="siswa_id" required>
@@ -126,48 +124,29 @@
                             </select>
                           </div>
                           <div class="form-group">
-                            <label for="bulan" class="control-label">Bulan</label>
-                            <div class="col-sm-12">
-                              <select class="form-control" id="bulan" name="bulan" required>
-                                  <option value="">Pilih Bulan</option>
-                                  <option value="Januari">Januari</option>
-                                  <option value="Februari">Februari</option>
-                                  <option value="Maret">Maret</option>
-                                  <option value="April">April</option>
-                                  <option value="Mei">Mei</option>
-                                  <option value="Juni">Juni</option>
-                                  <option value="Juli">Juli</option>
-                                  <option value="Agustus">Agustus</option>
-                                  <option value="September">September</option>
-                                  <option value="Oktober">Oktober</option>
-                                  <option value="November">November</option>
-                                  <option value="Desember">Desember</option>
-                              </select>
-                          </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="jenis" class="control-label">Jenis Tagihan</label>
-                            <select class="form-control" id="jenis" name="jenis" required>
-                              <option value="" disabled selected>Pilih Jenis Tagihan</option>
-                              <option value="SPP">SPP</option>
-                              <option value="Tabungan">Tabungan</option>
+                            <label for="akademik_id" class="control-label">Kelas</label>
+                            <select class="form-control" id="akademik_id" name="akademik_id" required>
+                              <option value="" disabled selected>Pilih Kelas</option>
+                              @foreach (App\Models\Akademik::all() as $akd)
+                                  <option value="{{ $akd->id }}">{{ $akd->nama }}</option>
+                              @endforeach
                             </select>
                           </div>
                           <div class="form-group">
-                            <label for="nominal" class="control-label">Nominal</label>
-                            <input type="text" class="form-control" id="nominal" name="nominal" placeholder="Masukkan Nominal" required>
+                            <label for="agama" class="control-label">Agama dan Budi Pekerti</label>
+                            <input type="text" class="form-control" id="agama" name="agama" placeholder="Masukkan Agama dan Budi Pekerti" required>
                           </div>
                           <div class="form-group">
-                            <label for="status" class="control-label">Status</label>
-                            <select class="form-control" id="status" name="status" required>
-                              <option value="">Pilih Status pembayaran</option>
-                              <option value="Januari">Lunas</option>
-                              <option value="Februari">Belum lunas</option>
-                            </select>
+                            <label for="jatidiri" class="control-label">Jati Diri</label>
+                            <input type="text" class="form-control" id="jatidiri" name="jatidiri" placeholder="Masukkan Jati Diri" required>
                           </div>
                           <div class="form-group">
-                            <label for="tanggal" class="control-label">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                            <label for="stem" class="control-label">Literasi dan STEM</label>
+                            <input type="text" class="form-control" id="stem" name="stem" placeholder="Masukkan Literasi dan STEM" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="project" class="control-label">Project</label>
+                            <input type="text" class="form-control" id="project" name="project" placeholder="Masukkan Nama Project" required>
                           </div>
                           <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-primary" id="btn-save" value="create">Simpan</button>
@@ -209,40 +188,39 @@
 
           $('#laravel_11_datatable').DataTable();
 
-          $('#create-new-tagihan').click(function() {
-              $('#btn-save').val("create-tagihan");
-              $('#tagihan_id').val('');
-              $('#tagihanForm').trigger("reset");
-              $('#tagihanCrudModal').html("Tambah Data Tagihan");
-              $('#ajax-tagihan-modal').modal('show');
-              $('#modal-preview').attr('src', 'https://via.placeholder.com/150').addClass('hidden');
-
+          $('#create-new-nilai').click(function() {
+              $('#btn-save').val("create-nilai");
+              $('#nilai_id').val('');
+              $('#nilaiForm').trigger("reset");
+              $('#nilaiCrudModal').html("Tambah Data Nilai");
+              $('#ajax-nilai-modal').modal('show');
           });
 
-          $('body').on('click', '#btn-edit-post', function() {
+          $('body').on('click', '#btn-edit-nilai', function() {
               var id = $(this).data('id');
-              $.get(SITEURL + 'tagihan/' + id + '/edit', function(data) {
-                  $('#tagihanCrudModal').html("Edit Data Tagihan");
-                  $('#btn-save').val("edit-tagihan");
-                  $('#ajax-tagihan-modal').modal('show');
-                  $('#tagihan_id').val(data.id);
+              $.get(SITEURL + 'nilai/' + id + '/edit', function(data) {
+                  $('#nilaiCrudModal').html("Edit Data Nilai");
+                  $('#btn-save').val("edit-nilai");
+                  $('#ajax-nilai-modal').modal('show');
+                  $('#nilai_id').val(data.id);
                   $('#siswa_id').val(data.siswa_id);
                   $('#kelas_id').val(data.kelas_id);
-                  $('#bulan').val(data.bulan);
-                  $('#jenis').val(data.jenis);
-                  $('#nominal').val(data.nominal);
-                  $('#status').val(data.status);
-                  $('#tanggal').val(data.tanggal);
+                  $('#akademik_id').val(data.akademik_id);
+                  $('#agama').val(data.agama);
+                  $('#jatidiri').val(data.jatidiri);
+                  $('#stem').val(data.stem);
+                  $('#project').val(data.project);
+                  $('#tanggal').val(data.created_at.split(' ')[0]);
               });
           });
 
-          $('body').on('click', '#btn-delete-post', function() {
+          $('body').on('click', '#btn-delete-nilai', function() {
               var id = $(this).data("id");
 
               if (confirm("Are you sure you want to delete this?")) {
                   $.ajax({
                       type: "DELETE",
-                      url: SITEURL + "tagihan/" + id,
+                      url: SITEURL + "nilai/" + id,
                       success: function(data) {
                           console.log("Data berhasil dihapus:", data);
                           var oTable = $('#laravel_11_datatable').DataTable();
@@ -255,56 +233,39 @@
               }
           });
 
-
-          $('body').on('submit', '#tagihanForm', function(e) {
+          $('body').on('submit', '#nilaiForm', function(e) {
             e.preventDefault();
-            var id = $('#tagihan_id').val();
+            var id = $('#nilai_id').val();
             var actionType = $('#btn-save').val();
             var formData = $(this).serialize();
 
-
             $('#btn-save').html('Menyimpan..');
             $.ajax({
-              type: actionType === "edit-tagihan" ? 'PUT' : 'POST',
-              url: actionType === "edit-tagihan" ? SITEURL + 'tagihan/index/tagihanUpdate/' + id : SITEURL + 'tagihan/index/tagihanStore',
+              type: actionType === "edit-nilai" ? 'PUT' : 'POST',
+              url: actionType === "edit-nilai" ? SITEURL + 'nilai/' + id : SITEURL + 'nilai',
               data: formData,
               success: function(response) {
-                $('#tagihanForm').trigger("reset");
-                $('#ajax-tagihan-modal').modal('hide');
+                $('#nilaiForm').trigger("reset");
+                $('#ajax-nilai-modal').modal('hide');
                 $('#btn-save').html('Simpan');
                 location.reload();
-            },
-            error: function(xhr) {
+              },
+              error: function(xhr) {
                 console.error("Error:", xhr.responseText);
                 $('#btn-save').html('Simpan');
-            }
+              }
             });
           });
-
-        // Preview Gambar
-        function readURL(input, id) {
-            id = id || '#modal-preview';
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $(id).attr('src', e.target.result).removeClass('hidden');
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
     });
     </script>
 
     <!-- Core JS Files -->
-    <!--   Core JS Files   -->
-  <script src="{{asset('adminpage')}}/assets/js/core/popper.min.js"></script>
-  <script src="{{asset('adminpage')}}/assets/js/core/bootstrap.min.js"></script>
-  <script src="{{asset('adminpage')}}/assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="{{asset('adminpage')}}/assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{asset('adminpage')}}/assets/js/argon-dashboard.min.js?v=2.1.0"></script>
+    <script src="{{asset('adminpage')}}/assets/js/core/popper.min.js"></script>
+    <script src="{{asset('adminpage')}}/assets/js/core/bootstrap.min.js"></script>
+    <script src="{{asset('adminpage')}}/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="{{asset('adminpage')}}/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="{{asset('adminpage')}}/assets/js/argon-dashboard.min.js?v=2.1.0"></script>
   </div>
 </body>
 </html>

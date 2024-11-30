@@ -87,5 +87,11 @@ Route::get('absensi/index/absensiEdit/{id}', [AbsensiController::class, 'edit'])
 Route::delete('absensi/index/absensiDelete/{id}', [AbsensiController::class, 'destroy']);
 Route::put('absensi/index/absensiUpdate/{id}', [AbsensiController::class, 'update']);
 
+Route::resource('/nilai', \App\Http\Controllers\NilaiController::class);
+Route::get('/nilai', [NilaiController::class, 'index'])->name('nilai.index');
+Route::post('nilai/index/nilaiStore', [NilaiController::class, 'store'])->name('nilai.store');
+Route::get('nilai/index/nilaiEdit/{id}', [NilaiController::class, 'edit'])->name('nilai.edit');
+Route::delete('nilai/index/nilaiDelete/{id}', [NilaiController::class, 'destroy']);
+Route::put('nilai/index/nilaiUpdate/{id}', [NilaiController::class, 'update']);
 
 require __DIR__.'/auth.php';
