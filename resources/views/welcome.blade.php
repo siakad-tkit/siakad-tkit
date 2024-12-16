@@ -23,34 +23,32 @@
 
         <!-- Header Section -->
         <header class="bg-white py-12 px-6 mx-6">
-            <div class="flex flex-row gap-12">
-                <div class="max-w-7xl mx-auto flex flex-col items-left text-left w-[50%] ">
-                    <img src="{{asset('adminpage')}}/assets/img/logos/logo-landingpage.png" alt="Logo" class="mb-6 w-16 h-16 ">
-                    <h1 class="text-3xl font-bold text-gray-800 mb-10 mt-10">Sistem Administrasi TKIT Darul Falah</h1>
-                    <p class="text-lg text-gray-600 mb-8 mt-10">Kelola data siswa, guru, absensi dan keuangan dengan mudah menggunakan sistem administrasi yang terintegrasi</p>
-                    <div>
-
-                    @auth
-                    <a href="{{ route('dashboard-tkit') }}" class="px-6 py-3 text-black text-lg font-semibold  hover:bg-teal-600 transition duration-300 w-[159px] h-[51px] bg-[#d9d9d9]/0 rounded-[60px] border border-[#3dd5c9]">
-                      Dashboard
-                    </a>
-                    @else
-                    <a href="{{ route('login') }}" class="px-6 py-3 text-black text-lg font-semibold  hover:bg-teal-600 transition duration-300 w-[159px] h-[51px] bg-[#d9d9d9]/0 rounded-[60px] border border-[#3dd5c9]">
-                      Get Started
-                    </a>
-                    @endauth
-
-                    </div>
-                  </div>
+          <div class="flex flex-col lg:flex-row gap-12 lg:items-center">
+              <div class="max-w-7xl mx-auto flex flex-col items-center text-center lg:items-start lg:text-left w-full lg:w-[50%]">
+                  <img src="{{asset('adminpage')}}/assets/img/logos/logo-landingpage.png" alt="Logo" class="mb-6 w-16 h-16 mx-auto">
+                  <h1 class="text-3xl font-bold text-gray-800 mb-10 mt-10">Sistem Administrasi TKIT Darul Falah</h1>
+                  <p class="text-lg text-gray-600 mb-8 mt-10">Kelola data siswa, guru, absensi dan keuangan dengan mudah menggunakan sistem administrasi yang terintegrasi</p>
                   <div>
-                    <img src="{{asset('adminpage')}}/assets/img/landing-page.png" alt="" class="w-[711px] h-[636px] ">
+                      @auth
+                      <a href="{{ route('dashboard-tkit') }}" class="px-6 py-3 text-black text-lg font-semibold hover:bg-teal-600 transition duration-300 w-[159px] h-[51px] bg-[#d9d9d9]/0 rounded-[60px] border border-[#3dd5c9]">
+                          Dashboard
+                      </a>
+                      @else
+                      <a href="{{ route('login') }}" class="px-6 py-3 text-black text-lg font-semibold hover:bg-teal-600 transition duration-300 w-[159px] h-[51px] bg-[#d9d9d9]/0 rounded-[60px] border border-[#3dd5c9]">
+                          Get Started
+                      </a>
+                      @endauth
                   </div>
-            </div>
-
-        </header>
+              </div>
+              <div class="flex justify-center lg:justify-start">
+                  <img src="{{asset('adminpage')}}/assets/img/landing-page.png" alt="" class="w-[711px] h-[636px] hidden lg:block">
+              </div>
+          </div>
+      </header>
+      
 
         <!-- Services Section -->
-        <section class="py-16 bg-blue-50 ">
+        <section class="py-16 bg-blue-50  ">
             <div class="max-w-7xl mx-auto text-center">
               <h2 class="text-3xl font-bold text-gray-800 mb-12 text-left">Our Services</h2>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
