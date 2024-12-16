@@ -99,11 +99,11 @@
       </div>
 
     <!-- Bagian Kanan: Ilustrasi -->
-      <div class="w-1/2 bg-blue-100 relative p-8 flex items-center justify-center">
+      <div class="w-1/2 bg-blue-100 relative p-8 flex items-center justify-center ">
       <img
         src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
         alt="Illustration"
-        class="max-w-sm "
+        class="max-w-sm mhidden  "
       />
     </div>
   </div>
