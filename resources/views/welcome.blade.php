@@ -19,39 +19,42 @@
         <script src="https://cdn.tailwindcss.com"></script>
 
     </head>
-    <body class="bg-white font-sans">
+    <body class="bg-white font-sans lg:mx-10 ">
 
         <!-- Header Section -->
-        <header class="bg-white py-12 px-6 mx-6">
-          <div class="flex flex-col lg:flex-row gap-12 lg:items-center">
-              <div class="max-w-7xl mx-auto flex flex-col items-center text-center lg:items-start lg:text-left w-full lg:w-[50%]">
-                  <img src="{{asset('adminpage')}}/assets/img/logos/logo-landingpage.png" alt="Logo" class="mb-6 w-16 h-16 mx-auto">
-                  <h1 class="text-3xl font-bold text-gray-800 mb-10 mt-10">Sistem Administrasi TKIT Darul Falah</h1>
-                  <p class="text-lg text-gray-600 mb-8 mt-10">Kelola data siswa, guru, absensi dan keuangan dengan mudah menggunakan sistem administrasi yang terintegrasi</p>
+        <header class="bg-white py-12 px-6  ">
+          <div class="flex flex-row gap-12 ">
+              <div class="max-w-7xl max-lg:mx-auto sm:mx-1 flex flex-col text-start items-start w-full lg:items-start lg:text-start lg:w-[40%] ">
+                  <img src="{{asset('adminpage')}}/assets/img/logos/logo-landingpage.png" alt="Logo" class="mb-6 w-16 h-16 mt-8 ">
+                  <h1 class="text-3xl font-bold text-gray-800 mb-10 mt-6">Sistem Administrasi TKIT Darul Falah</h1>
+                  <p class="text-lg text-gray-600 mb-8 mt-6">Kelola data siswa, guru, absensi dan keuangan dengan mudah menggunakan sistem administrasi yang terintegrasi</p>
                   <div>
-                      @auth
-                      <a href="{{ route('dashboard-tkit') }}" class="px-6 py-3 text-black text-lg font-semibold hover:bg-teal-600 transition duration-300 w-[159px] h-[51px] bg-[#d9d9d9]/0 rounded-[60px] border border-[#3dd5c9]">
-                          Dashboard
-                      </a>
-                      @else
-                      <a href="{{ route('login') }}" class="px-6 py-3 text-black text-lg font-semibold hover:bg-teal-600 transition duration-300 w-[159px] h-[51px] bg-[#d9d9d9]/0 rounded-[60px] border border-[#3dd5c9]">
-                          Get Started
-                      </a>
-                      @endauth
+
+                  @auth
+                  <a href="{{ route('dashboard-tkit') }}" class="px-6 py-3 text-black text-lg font-semibold  hover:bg-teal-600 hover:text-white transition duration-300 w-[159px] h-[51px] bg-[#d9d9d9]/0 rounded-[60px] border border-[#3dd5c9]">
+                    Dashboard
+                  </a>
+                  @else
+                  <a href="{{ route('login') }}" class="px-6 py-3 text-black text-lg font-semibold  hover:bg-teal-600 transition duration-300 w-[159px] h-[51px] bg-[#d9d9d9]/0 rounded-[60px] border border-[#3dd5c9]">
+                    Get Started
+                  </a>
+                  @endauth
+
                   </div>
-              </div>
-              <div class="flex justify-center lg:justify-start">
-                  <img src="{{asset('adminpage')}}/assets/img/landing-page.png" alt="" class="w-[711px] h-[636px] hidden lg:block">
-              </div>
+                </div>
+                <div>
+                  <img src="{{asset('adminpage')}}/assets/img/landing-page.png" alt="" class="w-[711px] h-[636px] hidden lg:block ">
+                </div>
           </div>
+
       </header>
       
 
         <!-- Services Section -->
-        <section class="py-16 bg-blue-50  ">
+        <section class="py-16 bg-blue-50 ">
             <div class="max-w-7xl mx-auto text-center">
-              <h2 class="text-3xl font-bold text-gray-800 mb-12 text-left">Our Services</h2>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+              <h2 class="text-3xl font-bold text-gray-800 mb-12 text-left mx-5">Our Services</h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mx-5">
 
                 <!-- Service 1 -->
                 <div class="bg-[#638AEC] p-6 rounded-xl shadow-lg flex flex-col items-left text-left">
