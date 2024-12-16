@@ -80,6 +80,7 @@
                           <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder">No</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Foto</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Lengkap</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Panggilan</th>
@@ -104,6 +105,13 @@
                   <tbody>
                     @forelse ($siswas as $siswa)
                     <tr>
+                    <td>
+                        <div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="text-xs text-secondary mb-0">{{ $loop->iteration }}</p>
+                          </div>
+                        <div>
+                      </td>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>

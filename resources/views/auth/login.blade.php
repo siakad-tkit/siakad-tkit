@@ -56,10 +56,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white min-h-screen flex items-center justify-center">
-   <div class="w-3/4 max-w-4xl bg-white shadow-lg rounded-lg flex overflow-hidden">
+
+   <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg flex overflow-hidden flex-col md:flex-row">
 
     <!-- Bagian Kiri: Form Login -->
-      <div class="w-1/2 my-4 p-8 mt-6 ">
+      <div class="w-full md:w-1/2 my-4 p-8 mt-6">
          <div class="text-center mb-6">
             <h1 class="text-2xl font-bold text-blue-600">LOGIN</h1>
          </div>
@@ -82,24 +83,22 @@
                   name="password"
                   class="w-full px-4 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 "
                />
-
             </div>
             <div class="flex justify-end mb-6">
                <a href="#" class="text-sm text-blue-600 hover:underline">Lupa password?</a>
             </div>
             <div class="flex items-center justify-center">
                <button
-               class="w-[150px] h-[46px] bg-[#638aec] rounded-[20px]  text-white font-semibold hover:bg-blue-700 transition "
+               class="w-[150px] h-[46px] bg-[#638aec] rounded-[20px] text-white font-semibold hover:bg-blue-700 transition"
             >
             {{ __('Login') }}
             </button>
             </div>
-
          </form>
       </div>
 
     <!-- Bagian Kanan: Ilustrasi -->
-      <div class="w-1/2 bg-blue-100 relative p-8 flex items-center justify-center">
+      <div class="w-full md:w-1/2 bg-blue-100 relative p-8 flex items-center justify-center">
       <img
         src="{{asset('adminpage')}}/assets/img/logos/logotk.png"
         alt="Illustration"
@@ -107,5 +106,6 @@
       />
     </div>
   </div>
+
 </body>
 </html>

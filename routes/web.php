@@ -10,6 +10,7 @@ use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -93,5 +94,12 @@ Route::post('nilai/index/nilaiStore', [NilaiController::class, 'store'])->name('
 Route::get('nilai/index/nilaiEdit/{id}', [NilaiController::class, 'edit'])->name('nilai.edit');
 Route::delete('nilai/index/nilaiDelete/{id}', [NilaiController::class, 'destroy']);
 Route::put('nilai/index/nilaiUpdate/{id}', [NilaiController::class, 'update']);
+
+Route::resource('/user', \App\Http\Controllers\UserController::class);
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::post('user/index/userStore', [UserController::class, 'store'])->name('user.store');
+Route::get('user/index/userEdit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::delete('user/index/userDelete/{id}', [UserController::class, 'destroy']);
+Route::put('user/index/userUpdate/{id}', [UserController::class, 'update']);
 
 require __DIR__.'/auth.php';

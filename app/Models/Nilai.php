@@ -14,10 +14,7 @@ class Nilai extends Model
         'siswa_id',
         'kelas_id',
         'akademik_id',
-        'agama',
-        'jatidiri',
-        'stem',
-        'project'
+        'file',
     ];
 
     public function siswa()

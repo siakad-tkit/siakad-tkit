@@ -37,7 +37,7 @@
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="bi bi-person-lines-fill text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Data Guru</span>
+                    <span class="nav-link-text ms-1">Guru</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -45,7 +45,7 @@
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="bi bi-backpack-fill text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Data Siswa</span>
+                    <span class="nav-link-text ms-1">Siswa</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -53,7 +53,7 @@
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="bi bi-menu-button-wide text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Data Kelas</span>
+                    <span class="nav-link-text ms-1">Kelas</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -61,7 +61,7 @@
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="bi bi-calendar-event-fill text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Data Akademik</span>
+                    <span class="nav-link-text ms-1">Akademik</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -69,7 +69,7 @@
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="bi bi-card-checklist text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Data Kegiatan</span>
+                    <span class="nav-link-text ms-1">Kegiatan</span>
                 </a>
             </li>
             <li class="nav-item">
