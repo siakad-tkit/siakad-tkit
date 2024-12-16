@@ -15,11 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('siswa_id')->constrained('siswas')->onDelete('cascade');
             $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');
-            $table->foreignId('akademik_id')->constrained('akademik')->onDelete('cascade');
-            $table->string('agama');
-            $table->string('jatidiri');
-            $table->string('stem');
-            $table->string('project');
+            $table->foreignId('akademik_id')->constrained('akademiks')->onDelete('cascade');
+            $table->string('file');
             $table->timestamps();
         });
     }

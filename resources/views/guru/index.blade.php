@@ -62,7 +62,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tabel Guru</h6>
+              <h6>Data Guru</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -70,6 +70,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder">No</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Foto</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Status</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Bagian</th>
@@ -90,6 +91,13 @@
                   <tbody>
                     @forelse ($gurus as $guru)
                     <tr>
+                    <td>
+                        <div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="text-xs text-secondary mb-0">{{ $loop->iteration }}</p>
+                          </div>
+                        <div>
+                      </td>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>

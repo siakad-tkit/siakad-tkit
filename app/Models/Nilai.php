@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\File;
+
+
 
 class Nilai extends Model
 {
@@ -14,10 +17,7 @@ class Nilai extends Model
         'siswa_id',
         'kelas_id',
         'akademik_id',
-        'agama',
-        'jatidiri',
-        'stem',
-        'project'
+        'file',
     ];
 
     public function siswa()
@@ -34,4 +34,5 @@ class Nilai extends Model
     {
         return $this->belongsTo(Akademik::class, 'akademik_id');
     }
+
 }

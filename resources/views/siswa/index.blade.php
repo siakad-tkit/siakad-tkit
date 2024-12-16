@@ -68,8 +68,11 @@
               <div class="table-responsive p-0">
               <a href="{{ route('siswa.create') }}" class="btn btn-info ml-3" style="padding-left:20px; margin-left: 20px;">TAMBAH DATA SISWA</a>
               <a href="{{ route('siswa.export') }}" class="btn btn-success">Download Excel</a>
-                        <div class="form-group>
+                        <div class="form-group">
+                        
                           <form action="{{ route('siswa.index') }}" method="GET" class="d-flex">
+
+
                             <label for="search">Search</label>
                             <input type="text" class="form-control" id="search" name="search" placeholder="Search Nama">
                             <button class="btn btn-primary" type="submit">Search</button>
@@ -80,6 +83,7 @@
                           <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder">No</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Foto</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Lengkap</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">Nama Panggilan</th>
@@ -104,6 +108,13 @@
                   <tbody>
                     @forelse ($siswas as $siswa)
                     <tr>
+                    <td>
+                        <div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="text-xs text-secondary mb-0">{{ $loop->iteration }}</p>
+                          </div>
+                        <div>
+                      </td>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
