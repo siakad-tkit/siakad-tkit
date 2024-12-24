@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Detail Siswa</div>
+                    <div class="panel-heading"></div>
                     <div class="panel-body">
                         <a href="{{ route('siswa.index') }}" class="btn btn-primary">Kembali</a>
                         <table class="table table-bordered">

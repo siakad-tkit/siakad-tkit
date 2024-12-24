@@ -109,11 +109,11 @@
                     @forelse ($siswas as $siswa)
                     <tr>
                     <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
+                        <div class="d-flex px-2 py-1">
+                          <div>
                             <p class="text-xs text-secondary mb-0">{{ $loop->iteration }}</p>
                           </div>
-                        <div>
+                        </div>
                       </td>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -123,43 +123,43 @@
                         </div>
                       </td>
                       <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
+                        <div class="d-flex px-2 py-1">
+                          <div>
                             <p class="text-xs text-secondary mb-0">{{ $siswa->nama }}</p>
                           </div>
                         <div>
                       </td>
                       <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
+                        <div class="d-flex px-2 py-1">
+                          <div>
                             <p class="text-xs text-secondary mb-0">{{ $siswa->panggilan }}</p>
                           </div>
                         <div>
                       </td>
                       <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
+                        <div class="d-flex px-2 py-1">
+                          <div>
                             <p class="text-xs text-secondary mb-0">{{ $siswa->no_induk }}</p>
                           </div>
                         <div>
                       </td>
                       <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
+                        <div class="d-flex px-2 py-1">
+                          <div>
                             <p class="text-xs text-secondary mb-0">{{ $siswa->nisn }}</p>
                           </div>
                         <div>
                       </td>
                       <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
+                        <div class="d-flex px-2 py-1">
+                          <div>
                             <p class="text-xs text-secondary mb-0">{{ $siswa->kelamin }}</p>
                           </div>
                         <div>
                       </td>
                       <td>
-                        <div>
-                          <div class="d-flex flex-column justify-content-center">
+                        <div class="d-flex px-2 py-1">
+                          <div>
                             <p class="text-xs text-secondary mb-0">{{ $siswa->tempat_lahir }}, {{ $siswa->tanggal_lahir }}</p>
                           </div>
                         <div>

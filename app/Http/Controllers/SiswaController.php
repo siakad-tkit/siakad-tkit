@@ -139,14 +139,14 @@ class SiswaController extends Controller
 
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil dihapus');
     }
-    //detail view data siswa
+   
     public function show($siswa)
     {
             $siswa = Siswa::findOrFail($siswa);
             return view('siswa.show', ['siswa' => $siswa]);
     }
 
-    public function exportExcel()
+    public function export()
     {
         return Excel::download(new SiswaExport, 'data-siswa.xlsx');
     }

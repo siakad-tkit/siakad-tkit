@@ -44,7 +44,7 @@ Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.cre
 Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
 Route::get('siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
 Route::get('siswa/{id}/show', [SiswaController::class, 'show'])->name('siswa.show');
-Route::get('/siswa/export', [SiswaController::class, 'exportExcel'])->name('siswa.export');
+Route::get('/export-siswa', [SiswaController::class, 'export'])->name('siswa.export');
 
 Route::resource('/kelas', \App\Http\Controllers\KelasController::class);
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');

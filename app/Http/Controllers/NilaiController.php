@@ -57,33 +57,45 @@ class NilaiController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-      
-        $request->validate([
-            'siswa_id' => 'required|exists:siswas,id',
-            'kelas_id' => 'required|exists:kelas,id',
-            'akademik_id' => 'required|exists:akademiks,id',
-            'file' => 'nullable|mimes:ppt,pptx,pdf,doc,docx',
-        ]);
+{
+    // Validasi input
+    $request->validate([
+        'siswa_id' => 'required|exists:siswas,id',
+        'kelas_id' => 'required|exists:kelas,id',
+        'akademik_id' => 'required|exists:akademiks,id',
+        'file' => 'nullable|mimes:ppt,pptx,pdf,doc,docx|max:2048',
+    ]);
 
-        $nilai = Nilai::findOrFail($id);
+    // Temukan data yang akan diperbarui
+    $nilai = Nilai::findOrFail($id);
 
-        if ($request->hasFile('file')) {
-            
-            if ($nilai->file) {
-                Storage::delete('public/' . $nilai->file);
-            }
-            
-            $file = $request->file('file')->store('file-raport', 'public');
-            $data['file'] = $file;
+    // Cek apakah ada file baru yang diunggah
+    if ($request->hasFile('file')) {
+        // Hapus file lama jika ada
+        if ($nilai->file) {
+            Storage::delete('public/' . $nilai->file);
         }
-        $nilai = Nilai::findOrFail($id);
 
-        
-        $nilai->update($request->all());
+        // Simpan file baru ke 'file-raport' di storage/public
+        $file = $request->file('file');
+        $fileName = time() . '-' . $file->getClientOriginalName(); // Nama file unik
+        $filePath = $file->storeAs('file-raport', $fileName, 'public'); // Simpan file
 
-        return response()->json(['success' => 'Data nilai berhasil diperbarui!']);
+        // Perbarui kolom file di data nilai
+        $nilai->file = 'file-raport/' . $fileName;
     }
+
+    // Perbarui data lainnya
+    $nilai->siswa_id = $request->siswa_id;
+    $nilai->kelas_id = $request->kelas_id;
+    $nilai->akademik_id = $request->akademik_id;
+
+    // Simpan perubahan
+    $nilai->save();
+
+    return response()->json(['success' => 'Data nilai berhasil diperbarui!']);
+}
+
 
     public function destroy($id)
     {
